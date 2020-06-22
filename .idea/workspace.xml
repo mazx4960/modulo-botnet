@@ -20,8 +20,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a8efad8-6156-4692-8557-aa8f2f8fc442" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/server_django/api/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server_django/webui/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/botnet-enumeration-network.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/botnet-enumeration-network.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/server_django/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/server_django/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/cnc/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/cnc/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/cnc/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/cnc/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/cnc/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/cnc/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/cnc/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/website/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/website/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/website/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/website/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/website/wsgi.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,11 +123,12 @@
       <workItem from="1592123339545" duration="55000" />
       <workItem from="1592123432796" duration="1898000" />
       <workItem from="1592125469635" duration="688000" />
+      <workItem from="1592826204444" duration="300000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
