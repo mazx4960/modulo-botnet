@@ -1,5 +1,8 @@
 # Botnet CnC (Django)
 
+The default username is admin.
+The default password is password
+
 ## Functionalities
 * Job Balancing
 * Testing Connectivity with all known Agents
