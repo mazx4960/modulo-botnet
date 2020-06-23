@@ -44,3 +44,16 @@ class User(models.Model):
 
     def __str__(self):
         return 'User <{}>'.format(self.username)
+
+
+class Session(models.Model):
+    id = models.AutoField(primary_key=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(default=datetime.now)
+
+
+class Agent_session(models.Model):
+    id = models.AutoField(primary_key=True)
+    agent = models.ForeignKey(Agent, on_delete=models.CASCADE)
+    Session = models.ForeignKey(Session, on_delete=models.CASCADE)
+    protocol = models.CharField(max_length=50)
