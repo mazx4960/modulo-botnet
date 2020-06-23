@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="47d9d3bf-29db-44fc-9565-ed4d27b192db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/api/modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/api/modules.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_django/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/api/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_django/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/api/views.py" afterDir="false" />
     </list>
