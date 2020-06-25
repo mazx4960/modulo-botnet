@@ -23,5 +23,6 @@ class AgentModelTest(TestCase):
         self.assertIs(agent_online_60_secs_ago.is_online(), False)
 
 
-class ApiTest(TestCase):
+class nmapTest(TestCase):
     pass
+

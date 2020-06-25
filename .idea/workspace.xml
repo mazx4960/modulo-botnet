@@ -21,9 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="47d9d3bf-29db-44fc-9565-ed4d27b192db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/api/modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/api/modules.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/api/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,17 +36,41 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1dlRk1Lx6dmvrL4IPBMfEboXGra" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="47d9d3bf-29db-44fc-9565-ed4d27b192db" name="Default Changelist" comment="" />
+      <created>1592997833571</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592997833571</updated>
+    </task>
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="462" y="165" key="SettingsEditor" timestamp="1593007594164">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="462" y="165" key="SettingsEditor/0.0.1920.1040/-1920.410.1920.1040@0.0.1920.1040" timestamp="1593007594164" />
   </component>
 </project>
