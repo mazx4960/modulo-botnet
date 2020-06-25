@@ -15,9 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.shortcuts import redirect
+
+
+def redirect_root(request):
+    return redirect('webui/')
+
 
 urlpatterns = [
+    path('', redirect_root),
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls'), name='api'),
-    path('', include('webui.urls'), name='webui'),
+    path('api/', include('apps.api.urls'), name='api'),
+    path('authentication/', include('apps.authentication.urls'), name='authentication'),
+    path('webui/', include('apps.webui.urls'), name='webui'),
 ]
