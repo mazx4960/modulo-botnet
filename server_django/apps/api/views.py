@@ -1,5 +1,5 @@
 from django.views.decorators.http import require_POST
-from django.shortcuts import redirect
+from django.shortcuts import redirect, reverse
 
 from rest_framework import status
 from rest_framework.decorators import api_view
