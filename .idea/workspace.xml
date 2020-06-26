@@ -21,13 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="47d9d3bf-29db-44fc-9565-ed4d27b192db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/api/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/webui/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/webui/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/webui/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/webui/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
