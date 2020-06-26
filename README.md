@@ -67,4 +67,4 @@ nmap -sS 192.168.1.1 1-65535
 ```
 
 ## Future expansions
-Work in progress
+- [ ] Docker swarm for different protocols like http and dns tunneling
