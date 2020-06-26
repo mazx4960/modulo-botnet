@@ -15,8 +15,8 @@
 * [Future expansions](#future-expansions)
 
 ## Usage
-C2 Server
-<i>The default username is admin. The default password is password</i>
+<b>C2 Server</b>
+<br><i>The default username is admin. The default password is password</i>
 ```commandline
 cd server_django
 python manage.py migrate # to initialise and migrate database
@@ -24,7 +24,7 @@ python manage.py createsuperuser <username> # to create a new superuser (optiona
 python manage.py runserver
 ```
 
-Agent
+<b>Agent</b>
 ```commandline
 to be completed
 ```
