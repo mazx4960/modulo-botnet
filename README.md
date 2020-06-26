@@ -16,9 +16,11 @@
 
 ## Usage
 C2 Server
+<i>The default username is admin. The default password is password</i>
 ```commandline
 cd server_django
 python manage.py migrate # to initialise and migrate database
+python manage.py createsuperuser <username> # to create a new superuser (optional)
 python manage.py runserver
 ```
 
