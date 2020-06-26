@@ -58,7 +58,7 @@ to be completed
     - [ ] Self-Removal
 
 ## Supported Plugins
-nmap
+- [x] nmap
 ```commandline
 load module nmap
 nmap -sS 192.168.1.1 1-65535
