@@ -13,6 +13,15 @@ class Pipeline(object):
         self.modules_loaded = []
         self.agent_id_list = agent_id_list
 
+    def create_session(self):
+        pass
+
+    def load_session(self, session_id):
+        pass
+
+    def destroy_session(self, session_id):
+        pass
+
     def load_module(self, module_name):
         if module_name in self.MODULE_LIST:
             if module_name in self.modules_loaded:

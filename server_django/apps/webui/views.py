@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.views.decorators.http import require_POST
+from django.shortcuts import redirect, reverse, render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -19,6 +20,12 @@ def agent_detail(request):
     pass
 
 
+@require_POST
+def create_session(request):
+    session_id = 0
+    return redirect(reverse('webui:session', kwargs={'session_id': session_id}))
+
+
 @login_required
-def view_session(request):
+def view_session(request, session_id):
     pass
