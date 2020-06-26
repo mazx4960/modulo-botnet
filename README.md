@@ -16,14 +16,14 @@
 
 ## Usage
 C2 Server
-```console
+```commandline
 cd server_django
 python manage.py migrate # to initialise and migrate database
 python manage.py runserver
 ```
 
 Agent
-```console
+```commandline
 to be completed
 ```
 
