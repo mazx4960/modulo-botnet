@@ -11,6 +11,7 @@ class Agent(models.Model):
     computer_name = models.CharField(max_length=100)
     username = models.CharField(max_length=100)
     identifier = models.CharField(max_length=20) # the mac address of the computer
+    protocol = models.CharField(max_length=50) # dns or http
 
     def __str__(self):
         return 'Agent <{}> ({})'.format(self.display_name, self.remote_ip)
@@ -64,7 +65,6 @@ class Agent_session(models.Model):
     id = models.AutoField(primary_key=True)
     agent = models.ForeignKey(Agent, on_delete=models.CASCADE)
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
-    protocol = models.CharField(max_length=50)
 
     def __str__(self):
         return 'Agent <{}> in session <{}>'.format(self.agent.id, self.session.id)

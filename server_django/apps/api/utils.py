@@ -1,4 +1,4 @@
-from . import modules
+from . import module_class
 from .models import Agent
 
 
@@ -28,7 +28,7 @@ class Pipeline(object):
                 raise PipelineError('Module already loaded!')
 
             # initialise the module
-            mod_instance = getattr(modules, module_name)
+            mod_instance = getattr(module_class, module_name)
             mod_instance.initialise(self.agent_id_list)
 
             self.modules_loaded[module_name] = mod_instance

@@ -3,7 +3,7 @@ import datetime
 from django.test import TestCase
 
 from .models import Agent, Command, User
-from .modules import nmap, nmapError
+from .module_class import nmap, nmapError
 
 class AgentModelTest(TestCase):
     def test_is_online_within_30_seconds(self):
