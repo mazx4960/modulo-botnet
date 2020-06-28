@@ -9,10 +9,15 @@
 
 ## Table of contents
 
+* [Important directories](#important-directories)
 * [Usage](#usage)
 * [Features](#features)
 * [Supported Plugins](#supported-plugins)
 * [Future expansions](#future-expansions)
+
+## Important Directories
+* apps => server_django/apps (api, authentication, webui)
+* modules => server_django/apps/api/modules
 
 ## Usage
 <b>C2 Server</b>
