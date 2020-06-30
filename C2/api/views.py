@@ -50,3 +50,4 @@ def get_command(request, agent_identifier):
 @api_view(['POST'])
 def output_command(request, agent_identifier):
     pass
+

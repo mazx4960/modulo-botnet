@@ -41,6 +41,7 @@ class Command(models.Model):
         return self.cmdline
 
 
+###########################
 class User(models.Model):
     id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=100, unique=True)
@@ -50,7 +51,7 @@ class User(models.Model):
 
     def __str__(self):
         return 'User <{}>'.format(self.username)
-
+###########################
 
 class Session(models.Model):
     id = models.AutoField(primary_key=True)
