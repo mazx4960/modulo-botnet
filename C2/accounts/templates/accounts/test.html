@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="/static/testcss.css">
+{% endblock %}
+
+{% block title %}
+<title>Dashboard</title>
+{% endblock %}
+
+{% block content %}
+<h1>Welcome to our Dashboard, {{name}}</h1>
+{% endblock %}

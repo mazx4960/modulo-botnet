@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Dashboard</title>
+{% endblock %}
+
+{% block content %}
+<h1>Logged in as {{ user }}</h1>
+{% for agent in agents %}
+<ul>
+    <li>{{ agent.display_name }}: {{ agent.remote_ip }}</li>
+</ul>
+{% endfor %}
+
+<form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+
+{% endblock %}
+
