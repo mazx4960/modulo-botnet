@@ -36,13 +36,14 @@ to be completed
 
 ## Features
 <b>C2 Server (webui)</b>
-- [ ] Login
-- [ ] Dashboard
-    - [ ] List of known compromised machines
+- [x] Login
+- [x] Dashboard
+    - [x] List of known compromised machines
     - [ ] Send Instruction
         - [ ] Select target agent(s)
         - [ ] Select from preconfigured list of commands (scan <>, download <>, run <>, ...)
         - [ ] Wait and receive output (if necessary)
+- [ ] Style sheets
 - [ ] Generate report (.txt) for discovered hosts and respective ports
 - [ ] Save and view past reports
 - [ ] Build a network tree that showcases compromised machines
