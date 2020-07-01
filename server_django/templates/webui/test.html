@@ -15,12 +15,12 @@ http://www.tooplate.com/view/2102-constructive
 -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
 	{% load static %}
-	<link rel="stylesheet" href="{% static 'styles/css/fontawesome-all.min.css' %}">
-	<link rel="stylesheet" href="{% static 'styles/css/bootstrap.min.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'styles/css/magnific-popup.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'styles/slick/slick.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'styles/slick/slick-theme.css' %}">
-	<link rel="stylesheet" href="{% static 'styles/css/tooplate-style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/fontawesome-all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}">
+	<link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
 
 	<script>
 		var renderPage = true;
@@ -55,19 +55,19 @@ http://www.tooplate.com/view/2102-constructive
 					<nav id="tmMainNav" class="tm-main-nav">
 						<ul>
 							<li>
-								<a id="Dashboard" class="scrolly active" data-bg-img="scathach.png" data-page="#tm-section-1">
+								<a id="Dashboard" class="scrolly active" data-bg-img="img/scathach.png" data-page="#tm-section-1">
 									<i class="fas fa-home tm-nav-fa-icon"></i>
 									<span>Dashboard</span>
 								</a>
 							</li>
 							<li>
-								<a id="Reports" class="scrolly" data-bg-img="jeanne alter.jpg" data-page="#tm-section-2" data-page-type="carousel">
+								<a id="Reports" class="scrolly" data-bg-img="img/jeanne alter.jpg" data-page="#tm-section-2" data-page-type="carousel">
 									<i class="fas fa-map tm-nav-fa-icon"></i>
 									<span>Reports</span>
 								</a>
 							</li>							
 							<li>
-								<a id="Bots" class="scrolly" data-bg-img="jeanne darcs.jpg" data-page="#tm-section-3">
+								<a id="Bots" class="scrolly" data-bg-img="img/jeanne darcs.jpg" data-page="#tm-section-3">
 									<i class="fas fa-users tm-nav-fa-icon"></i>
 									<span>Bots</span>
 								</a>
@@ -101,8 +101,8 @@ http://www.tooplate.com/view/2102-constructive
 							<header class="mb-4"><h2 class="tm-text-shadow">Saved Reports</h2></header>		            
 							<div class="tm-img-container">
 								<div class="tm-img-slider">
-									<a href="../templates/styles/img/okita alter portrait.jpg" class="tm-slider-img"><img src="../templates/styles/img/okita alter portrait.jpg" alt="Image" class="img-fluid"></a>
-									<a href="../templates/styles/img/jeanne alter portrait.png" class="tm-slider-img"><img src="../templates/styles/img/jeanne alter portrait.png" alt="Image" class="img-fluid"></a>
+									<a href="img/okita alter portrait.jpg" class="tm-slider-img"><img src="img/okita alter portrait.jpg" alt="Image" class="img-fluid"></a>
+									<a href="img/jeanne alter portrait.png" class="tm-slider-img"><img src="img/jeanne alter portrait.png" alt="Image" class="img-fluid"></a>
 								</div>
 							</div>		            		          
 						</div>       		          	
@@ -203,13 +203,13 @@ http://www.tooplate.com/view/2102-constructive
 		<div id="preload-03"></div>
 		<div id="preload-04"></div>
 
-		<link rel="stylesheet" type="text/css" href="{% static 'styles/mainpage.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'mainpage.css' %}">
 
 
-		<script type="text/javascript" src="{% static 'styles/js/jquery-3.2.1.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'styles/js/jquery.magnific-popup.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'styles/js/jquery.backstretch.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'styles/slick/slick.min.js' %}"></script> <!-- Slick Carousel -->
+		<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.backstretch.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script> <!-- Slick Carousel -->
 
 		<script>
 
@@ -297,7 +297,7 @@ http://www.tooplate.com/view/2102-constructive
 
 	    	// Change background image
 	    	var bgImg = currentNavItem.data("bgImg");
-	    	$.backstretch("../templates/styles/img/" + bgImg);
+	    	$.backstretch("../templates/img/" + bgImg);
   		}
 
   		// Setup Nav Toggle Button
@@ -363,7 +363,7 @@ http://www.tooplate.com/view/2102-constructive
 		     	// Set up background first page
 		     	var bgImg = $("#Dashboard").data("bgImg");
 		     	
-		     	$.backstretch("../templates/styles/img/" + bgImg, {fade: 500});
+		     	$.backstretch("../templates/img/" + bgImg, {fade: 500});
 
 		     	// Setup Carousel, Nav, and Nav Toggle
 			    setupCarousel();

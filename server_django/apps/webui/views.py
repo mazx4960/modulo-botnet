@@ -17,6 +17,11 @@ def dashboard(request):
     return render(request, 'webui/dashboard.html', {'agents':compromised_agents})
 
 
+@login_required(login_url="accounts:login")
+def testfunc(request):
+    return render(request, 'webui/test.html')
+
+
 @login_required
 def agent_list(request):
     pass

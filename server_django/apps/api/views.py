@@ -21,6 +21,14 @@ def push_command(request, agent_identifier):
 
 @api_view(['POST'])
 def get_command(request, agent_identifier):
+    """
+    Extracts the agent info from the request, updates the database and sends corresponding commands if any
+
+    :param request:
+    :param agent_identifier: The MAC address of the agent
+    :return: the command to execute or ''
+    """
+
     agent = Agent.objects.filter(identifier=agent_identifier)
     if not agent:
         agent = Agent.create(identifier=agent_identifier)
