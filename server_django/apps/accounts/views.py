@@ -16,10 +16,24 @@ def login_view(request):
             return redirect('webui:index')
     else:
         login_form = AuthenticationForm()
-    return render(request, 'accounts/login.html', {'login_form':login_form})
+    return render(request, 'accounts/tlogin.html', {'login_form':login_form})
 
 
-@login_required(login_url="accounts:login")
+# Create your views here.
+def tlogin_view(request):
+    if request.method == 'POST':
+        login_form = AuthenticationForm(data=request.POST)
+        if login_form.is_valid():
+            # login user
+            requested_user = login_form.get_user()
+            login(request, requested_user)
+            return redirect('webui:test')
+    else:
+        login_form = AuthenticationForm()
+    return render(request, 'accounts/tlogin.html', {'login_form':login_form})
+
+
+@login_required(login_url="accounts:tlogin")
 def logout_view(request):
     logout(request)
-    return redirect('accounts:login')
+    return redirect('accounts:tlogin')

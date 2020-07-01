@@ -214,7 +214,7 @@ p:last-child { margin-bottom: 0; }
 
 .tm-section {
     max-width: 100%;
-    width: auto;
+    width: 100%;
     background: transparent;    
 }
 
@@ -233,9 +233,9 @@ address { font-size: 1rem; }
     background: transparent;
     border-color: white;
     color: white;
-    font-weight: 300;
+    font-weight: 500;
     border-radius: 0;
-    padding: 15px;
+    padding: 20px;
 }
 
 .form-control:focus {
@@ -328,7 +328,7 @@ footer a { color: white; }
   }
 }
 
-@media (max-width: 991px) {    
+@media (max-width: 991px) {
 
     /*  Nav toggle
         https://www.youtube.com/watch?v=uyT3NSHhke8

@@ -55,33 +55,10 @@ http://www.tooplate.com/view/2102-constructive
 					<nav id="tmMainNav" class="tm-main-nav">
 						<ul>
 							<li>
-								<a id="Dashboard" class="scrolly active" data-bg-img="scathach.png" data-page="#tm-section-1">
-									<i class="fas fa-home tm-nav-fa-icon"></i>
-									<span>Dashboard</span>
-								</a>
-							</li>
-							<li>
-								<a id="Reports" class="scrolly" data-bg-img="jeanne alter.jpg" data-page="#tm-section-2" data-page-type="carousel">
-									<i class="fas fa-map tm-nav-fa-icon"></i>
-									<span>Reports</span>
-								</a>
-							</li>							
-							<li>
-								<a id="Bots" class="scrolly" data-bg-img="jeanne darcs.jpg" data-page="#tm-section-3">
-									<i class="fas fa-users tm-nav-fa-icon"></i>
-									<span>Bots</span>
-								</a>
-							</li>
-							<li>
-								<a id="Instructions" class="scrolly" data-bg-img="adele_wallpaper.png" data-page="#tm-section-4">
+								<a id="Login" class="scrolly active" data-bg-img="adele_wallpaper.png" data-page="#tm-section-1">
 									<i class="fas fa-comments tm-nav-fa-icon"></i>
-									<span>Instructions</span>
+									<span>Login</span>
 								</a>
-							</li>
-							<li>
-								<form method="post" action="{% url 'accounts:logout' %}">{% csrf_token %}
-									<button type='submit' class="btn tm-btn-submit tm-btn ml-auto">Logout</button>
-								</form>
 							</li>
 						</ul>
 					</nav>
@@ -89,119 +66,37 @@ http://www.tooplate.com/view/2102-constructive
 			</div>
 
 			<div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 tm-content">
-
-					<!-- section 1 -->
-					<section id="tm-section-1" class="tm-section">
-						<div class="ml-auto">
-							<header class="mb-4"><h1 class="tm-text-shadow">Dashboard</h1></header>
-							<p class="mb-5 tm-font-big">The dashboard of our botnet C&C, to add content.</p>
-							<a href="#" class="btn tm-btn tm-font-big" data-nav-link="#Reports">Continue</a> 
-							<!-- data-nav-link holds the ID of nav item, which means this link should behave the same as that nav item  -->
-						</div>
-					</section>
-
-					<!-- section 2 -->
-					<section id="tm-section-2" class="tm-section tm-section-carousel">
-						<div>
-							<header class="mb-4"><h2 class="tm-text-shadow">Saved Reports</h2></header>		            
-							<div class="tm-img-container">
-								<div class="tm-img-slider">
-									<a href="{% static 'img/okita alter portrait.jpg' %}" class="tm-slider-img"><img src="{% static 'img/okita alter portrait.jpg' %}" alt="Image" class="img-fluid"></a>
-									<a href="{% static 'img/jeanne alter portrait.png' %}" class="tm-slider-img"><img src="{% static 'img/jeanne alter portrait.png' %}" alt="Image" class="img-fluid"></a>
-								</div>
-							</div>		            		          
-						</div>       		          	
-					</section>
-
-					<!-- section 3 -->
-					<section id="tm-section-3" class="tm-section">						
-						<div class="row mb-4">
-							<header class="col-xl-12"><h2 class="tm-text-shadow">Compromised Bots</h2></header>		
-						</div>
-						<div class="row">
-							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-								<div class="media tm-bg-transparent-black tm-border-white">
-									<i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
-									<div class="media-body">
-										<h3>192.168.1.10</h3>
-										<p>MAC OS.</p>	
-									</div>
-								</div>
-							</div>	
-							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-								<div class="media tm-bg-transparent-black tm-border-white">
-									<i class="fas fa-map-pin mr-4 tm-icon-circled tm-icon-media"></i>	
-									<div class="media-body">
-										<h3>192.168.1.11</h3>
-										<p>Google Device</p>	
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-								<div class="media tm-bg-transparent-black tm-border-white">
-									<i class="fab fa-fly mr-4 tm-icon-circled tm-icon-media"></i>
-									<div class="media-body">
-										<h3>192.168.1.12</h3>
-										<p>Ubuntu Machine</p>		
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-								<div class="media tm-bg-transparent-black tm-border-white">
-									<i class="fab fa-linode mr-4 tm-icon-circled tm-icon-media"></i>
-									<div class="media-body">
-										<h3>192.168.1.13</h3>
-										<p>Windows 2k20</p>	
-									</div>
-								</div>
-							</div>			          		
-						</div>						               
-					</section>
-
 					<!-- section 4 -->
-					<section id="tm-section-4" class="tm-section">
+					<section id="tm-section-1" class="tm-section">
 						<div class="tm-bg-transparent-black tm-contact-box-pad">
 							<div class="row mb-4">
 								<div class="col-sm-12">
-									<header><h2 class="tm-text-shadow">Input Command</h2></header>
+									<header><h2 class="tm-text-shadow">Login to C2</h2></header>
 								</div>
 							</div>
 							<div class="row tm-page-4-content">
-								<div class="col-md-6 col-sm-12 tm-contact-col">
+								<div class="col-md-12 col-sm-12 tm-contact-col">
 									<div class="contact_message">
-										<form action="#contact" method="post" class="contact-form">
+										<form action="{% url 'accounts:tlogin' %}" method="post" class="contact-form">{% csrf_token %}
 											<div class="form-group">
-												<input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name" required>
+												<input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
 											</div>
 											<div class="form-group">
-												<input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email" required>
+												<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
 											</div>
-											<div class="form-group">
-												<textarea id="contact_message" name="contact_message" class="form-control" rows="9" placeholder="Message" required></textarea>
-											</div>
-											<button type="submit" class="btn tm-btn-submit tm-btn ml-auto">Send Instruction</button>
+											<button type="submit" class="btn tm-btn-submit tm-btn ml-auto">Login</button>
 										</form>
 									</div>
 								</div>
-								<div class="col-md-6 col-sm-12 tm-contact-col">
-									<div class="tm-address-box">
-										<p>Aliquam interdum, nisl sedd faucibus tempor, massa velit laoreet ipsum, et faucibus sapien magna at enim. Suspendisse a dictum tortor.</p>
-										<p>Curabitur venenatis leo in augue convallis, vulputate sollicitudin ex maximus.</p>
-										<address>
-											120-240 Aliquam nec neque augue<br>
-											Suspendisse tincidunt nunc,<br>
-											vitae sagis justo 11000
-										</address>
-									</div>
-								</div>
+
 							</div>
 						</div>
-					</section>					
-				</div>	<!-- .tm-content -->							
+					</section>
+				</div>	<!-- .tm-content -->
 				<footer class="footer-link">
 					<p class="tm-copyright-text">Copyright &copy; C4X 01/19 SDL Group 1</p>
 				</footer>
-			</div>	<!-- row -->			
+			</div>	<!-- row -->
 		</div>
 		<div id="preload-01"></div>
 		<div id="preload-02"></div>
@@ -277,16 +172,16 @@ http://www.tooplate.com/view/2102-constructive
   			// Add Event Listener to each Nav item
 	     	$(".tm-main-nav a").click(function(e){
 	     		e.preventDefault();
-		    	
+
 		    	var currentNavItem = $(this);
 		    	changePage(currentNavItem);
-		    	
+
 		    	setupCarousel();
 		    	setupFooter();
 
 		    	// Hide the nav on mobile
 		    	$("#tmSideBar").removeClass("show");
-		    });	    
+		    });
   		}
 
   		function changePage(currentNavItem) {
@@ -318,7 +213,7 @@ http://www.tooplate.com/view/2102-constructive
   		// If there is enough room, stick the footer at the bottom of page content.
   		// If not, place it after the page content
   		function setupFooter() {
-  			
+
   			var padding = 100;
   			var footerPadding = 40;
   			var mainContent = $("section"+currentPageID);
@@ -326,16 +221,16 @@ http://www.tooplate.com/view/2102-constructive
   			var footer = $(".footer-link");
   			var footerHeight = footer.outerHeight(true);
   			var totalPageHeight = mainContentHeight + footerHeight + footerPadding + padding;
-  			var windowHeight = $(window).height();		
+  			var windowHeight = $(window).height();
 
   			if(totalPageHeight > windowHeight){
   				$(".tm-content").css("margin-bottom", footerHeight + footerPadding + "px");
-  				footer.css("bottom", footerHeight + "px");  			
+  				footer.css("bottom", footerHeight + "px");
   			}
   			else {
   				$(".tm-content").css("margin-bottom", "0");
-  				footer.css("bottom", "20px");  				
-  			}  			
+  				footer.css("bottom", "20px");
+  			}
   		}
 
   		// Everything is loaded including images.
@@ -353,22 +248,22 @@ http://www.tooplate.com/view/2102-constructive
 		      	// The link contains data-nav-link attribute, which holds the nav item ID
 		      	// Nav item ID is then used to access and trigger click on the corresponding nav item
 		      	var linkToAnotherPage = $("a.tm-btn[data-nav-link]");
-			    
+
 			    if(linkToAnotherPage != null) {
-			    	
+
 			    	linkToAnotherPage.on("click", function(){
 			    		var navItemToHighlight = linkToAnotherPage.data("navLink");
 			    		$("a" + navItemToHighlight).click();
 			    	});
 			    }
-		      	
+
 		      	// Hide all pages
 		      	allPages.hide();
 
 		      	$("#tm-section-1").fadeIn();
 
 		     	// Set up background first page
-		     	var bgImg = $("#Dashboard").data("bgImg");
+		     	var bgImg = $("#Login").data("bgImg");
 		     	
 <!--		     	$.backstretch("../templates/img/" + bgImg, {fade: 500});-->
 				$.backstretch("{% static 'img/' %}" + bgImg, {fade: 500});

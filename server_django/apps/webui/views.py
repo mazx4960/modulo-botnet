@@ -6,18 +6,18 @@ from django.contrib.auth.decorators import login_required
 from ..api.models import Agent
 
 
-@login_required(login_url="accounts:login")
+@login_required(login_url="accounts:tlogin")
 def index(request):
     return render(request, 'webui/index.html')
 
 
-@login_required(login_url="accounts:login")
+@login_required(login_url="accounts:tlogin")
 def dashboard(request):
     compromised_agents = Agent.objects.all()
     return render(request, 'webui/dashboard.html', {'agents':compromised_agents})
 
 
-@login_required(login_url="accounts:login")
+@login_required(login_url="accounts:tlogin")
 def testfunc(request):
     return render(request, 'webui/test.html')
 
