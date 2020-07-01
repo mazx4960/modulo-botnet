@@ -3,11 +3,18 @@ from django.shortcuts import redirect, reverse, render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from ..api.models import Agent
 
 
-# @login_required
+@login_required(login_url="accounts:login")
 def index(request):
     return render(request, 'webui/index.html')
+
+
+@login_required(login_url="accounts:login")
+def dashboard(request):
+    compromised_agents = Agent.objects.all()
+    return render(request, 'webui/dashboard.html', {'agents':compromised_agents})
 
 
 @login_required

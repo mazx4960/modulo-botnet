@@ -26,6 +26,6 @@ urlpatterns = [
     path('', redirect_root),
     path('admin/', admin.site.urls),
     path('api/', include('apps.api.urls'), name='api'),
-    path('authentication/', include('apps.authentication.urls'), name='authentication'),
+    path('accounts/', include('apps.accounts.urls'), name='accounts'),
     path('webui/', include('apps.webui.urls'), name='webui'),
 ]

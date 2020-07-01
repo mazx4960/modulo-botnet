@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'apps.api',
-    'apps.authentication',
+    'apps.accounts',
     'apps.webui',
     #
     # 'api.apps.ApiConfig',
