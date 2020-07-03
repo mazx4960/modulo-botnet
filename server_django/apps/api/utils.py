@@ -9,7 +9,7 @@ class PipelineError(Exception):
 class Pipeline(object):
     MODULE_LIST = ['nmap']
 
-    def __init__(self, agent_id_list):
+    def __init__(self):
         self.modules_loaded = []
         self.agent_id_list = []
 
@@ -25,6 +25,8 @@ class Pipeline(object):
             agent_session.save()
 
         self.agent_id_list = agent_id_list
+
+        return session.id
 
     def load_session(self, session_id):
         agent_sessions = Agent_session.objects.filter(session_id=session_id)

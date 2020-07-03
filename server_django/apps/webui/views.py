@@ -36,7 +36,8 @@ def agent_detail(request):
 
 @require_POST
 def create_session(request):
-    session_id = 0
+    agent_id_list = request.form.getlist('agent_id')
+    session_id = Pipeline().create_session(agent_id_list)
     return redirect(reverse('webui:session', kwargs={'session_id': session_id}))
 
 
