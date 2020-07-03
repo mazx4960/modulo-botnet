@@ -1,6 +1,7 @@
 import datetime
 
 from django.test import TestCase
+from django.utils import timezone
 
 from .models import Agent
 from .module_class import nmap, nmapError
@@ -10,7 +11,7 @@ class AgentModelTest(TestCase):
         """
         is_online() returns true if the last login was within 30 seconds
         """
-        time_10_secs_ago = datetime.datetime.now() - datetime.timedelta(seconds=10)
+        time_10_secs_ago = timezone.now() - datetime.timedelta(seconds=10)
         agent_online_10_secs_ago = Agent(last_online=time_10_secs_ago)
         self.assertIs(agent_online_10_secs_ago.is_online(), True)
 
@@ -18,7 +19,7 @@ class AgentModelTest(TestCase):
         """
         is_online() returns False if the last login was more than 30 seconds ago
         """
-        time_60_secs_ago = datetime.datetime.now() - datetime.timedelta(seconds=60)
+        time_60_secs_ago = timezone.now() - datetime.timedelta(seconds=60)
         agent_online_60_secs_ago = Agent(last_online=time_60_secs_ago)
         self.assertIs(agent_online_60_secs_ago.is_online(), False)
 
