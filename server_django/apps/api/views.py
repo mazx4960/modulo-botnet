@@ -89,7 +89,6 @@ def output_command(request, agent_identifier):
 @require_GET
 def modules_download(request, module_name):
     modules_path = 'apps/api/modules'
-    print(module_name, os.listdir(modules_path))
     if module_name in os.listdir(modules_path):
         file_path = os.path.join(modules_path, module_name)
         return FileResponse(open(file_path, 'rb'))
