@@ -4,11 +4,10 @@ from rest_framework.response import Response
 
 from django.http import Http404
 from django.utils import timezone
+from django.utils.html import escape
 
 from .utils import get_client_ip
 from .models import Agent, Session, Agent_session
-
-import cgi
 
 
 @api_view(['POST'])
@@ -24,8 +23,8 @@ def push_command(request, agent_identifier):
         raise Http404("Agent does not exist")
 
     agent = Agent.objects.get(identifier=agent_identifier)
-    agent.push_cmd(request.form['cmdline'])
-    return Response(data='')
+    agent.push_cmd(request.data.get('cmdline'))
+    return Response(data='', content_type='text/plain')
 
 
 @api_view(['POST'])
@@ -61,7 +60,7 @@ def get_command(request, agent_identifier):
     if commands:
         cmdline = commands[0].cmdline
         commands[0].delete()
-    return Response(data=cmdline)
+    return Response(data=cmdline, content_type='text/plain')
 
 
 @api_view(['POST'])
@@ -80,7 +79,6 @@ def output_command(request, agent_identifier):
         agent = Agent.objects.get(identifier=agent_identifier)
 
     info = request.data.dict()
-    output = info["output"]
-    agent.output += cgi.escape(output)
+    agent.output += escape(info["output"])
     agent.save()
-    return Response(data='')
+    return Response(data='', content_type='text/plain')

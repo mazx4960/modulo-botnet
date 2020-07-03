@@ -1,10 +1,12 @@
-import datetime
-
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.utils import timezone
 
 from .models import Agent
 from .module_class import nmap, nmapError
+
+import datetime
+from urllib.parse import urlencode
+
 
 class AgentModelTest(TestCase):
     def test_is_online_within_30_seconds(self):
@@ -46,7 +48,6 @@ class NmapTest(TestCase):
         self.assertTrue(nmap_test.validate_command(valid_command_2))
         self.assertTrue(nmap_test.validate_command(valid_command_3))
 
-
     def test_gather_hosts_from_cidr(self):
         """
         gather_hosts_from_cidr() would return a list of ip addresses from a given cidr notation
@@ -72,7 +73,7 @@ class NmapTest(TestCase):
 
     def test_parse_commands(self):
         nmap_test = nmap()
-        sample_agent_list = [1,2,3]
+        sample_agent_list = [1, 2, 3]
         nmap_test.initialise(sample_agent_list)
 
         # Test cases
@@ -100,11 +101,101 @@ class PipelineTest(TestCase):
 
 
 class APITest(TestCase):
+    TEST_IDENTIFIER = 'ffffffffffff'
+
+    def setUp(self):
+        self.client = Client()
+        self.test_agent = Agent().create(self.TEST_IDENTIFIER)
+        self.test_agent.remote_ip = '127.0.0.1'
+        self.test_agent.operating_system = 'Windows'
+        self.test_agent.computer_name = 'Test-PC'
+        self.test_agent.username = 'Test-Agent'
+        self.test_agent.protocol = 'http'
+        self.test_agent.save()
+
     def test_push_command(self):
-        pass
+        sample_cmdline = {
+            'cmdline': 'whoami'
+        }
+
+        # Send the post request
+        response = self.client.post('/api/{}/push'.format(self.TEST_IDENTIFIER), urlencode(sample_cmdline),
+                                    content_type='application/x-www-form-urlencoded')
+
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 200)
+
+        # Check the response is an empty string
+        self.assertEqual(response.content, b'""')
+
+        # Check the cmdline field is inserted into the database
+        commands = self.test_agent.commands.filter(cmdline=sample_cmdline['cmdline'])
+        self.assertIsNotNone(commands)
 
     def test_get_command(self):
-        pass
+        agent_identifier = 'abcdefghijkl'
+        sample_data = {
+            'operating_system': 'Windows',
+            'computer_name': 'Work-PC',
+            'username': 'test_user'
+        }
+
+        # Send the post request
+        response = self.client.post('/api/{}/get'.format(agent_identifier), urlencode(sample_data),
+                                    content_type='application/x-www-form-urlencoded')
+
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 200)
+
+        # Check the response is an empty string
+        self.assertEqual(response.content, b'""')
 
     def test_output_command(self):
-        pass
+        sample_output = {
+            'output': 'Test-PC\Test-Agent'
+        }
+
+        # Send the post request
+        response = self.client.post('/api/{}/output'.format(self.TEST_IDENTIFIER), urlencode(sample_output),
+                                    content_type='application/x-www-form-urlencoded')
+
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 200)
+
+        # Check the response is an empty string
+        self.assertEqual(response.content, b'""')
+
+        # Check the cmdline field is inserted into the database
+        self.test_agent.refresh_from_db()
+        output = self.test_agent.output
+        self.assertIn(sample_output['output'], output)
+
+    def test_push_then_get_command(self):
+        agent_identifier = 'aaaaaaaaaaaa'
+        sample_data = {
+            'operating_system': 'Windows',
+            'computer_name': 'Work-PC',
+            'username': 'test_user_2'
+        }
+
+        sample_cmdline = {
+            'cmdline': 'it works!'
+        }
+
+        # Send the post request to create the test user
+        self.client.post('/api/{}/get'.format(agent_identifier), urlencode(sample_data),
+                                    content_type='application/x-www-form-urlencoded')
+
+        # Send the post request for push command
+        self.client.post('/api/{}/push'.format(agent_identifier), urlencode(sample_cmdline),
+                         content_type='application/x-www-form-urlencoded')
+
+        # Send the post request to get the newly pushed command
+        response = self.client.post('/api/{}/get'.format(agent_identifier), urlencode(sample_data),
+                                    content_type='application/x-www-form-urlencoded')
+
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 200)
+
+        # Check the response is an empty string
+        self.assertEqual(response.content, '"{}"'.format(sample_cmdline['cmdline']).encode())

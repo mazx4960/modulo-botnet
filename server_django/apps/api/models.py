@@ -12,6 +12,7 @@ class Agent(models.Model):
     username = models.CharField(max_length=100)
     identifier = models.CharField(max_length=20) # the mac address of the computer
     protocol = models.CharField(max_length=50) # dns or http
+    output = models.CharField(max_length=100000, default='')
 
     def __str__(self):
         return 'Agent <{}> ({})'.format(self.display_name, self.remote_ip)
