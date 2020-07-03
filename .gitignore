@@ -2,3 +2,5 @@
 .idea/workspace.xml
 *.pyc
 *.xml
+*.pyc
+*.sqlite3

