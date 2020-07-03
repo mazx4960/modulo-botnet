@@ -52,7 +52,7 @@ to be completed
 - [x] Job Balancing
 - [ ] Testing Connectivity with all known Agents
 - [x] Sending Instructions
-- [ ] Receiving Output of Instructions (tagging must be done to identify the 'session' or specific instruction sent, the computer it came from)
+- [x] Receiving Output of Instructions (tagging must be done to identify the 'session' or specific instruction sent, the computer it came from)
 - [ ] Gathering a location heatmap of all the agents and target (https://ipinfo.io/<ip>)
 
 <b>Agent</b>
