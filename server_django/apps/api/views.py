@@ -88,8 +88,21 @@ def output_command(request, agent_identifier):
 
 @require_GET
 def modules_download(request, module_name):
+    """
+    Allows agents to download modules from the server in zip format
+
+    :param request:
+    :param module_name: name of the module
+    :return: the fileresponse object if the file is valid
+    """
     modules_path = 'apps/api/modules'
     if module_name in os.listdir(modules_path):
         file_path = os.path.join(modules_path, module_name)
-        return FileResponse(open(file_path, 'rb'))
+        try:
+            module_file = open(file_path, 'rb')
+        except PermissionError:
+            raise Http404('Invalid File!')
+
+        return FileResponse(module_file)
+
     raise Http404('Module does not exist!')
