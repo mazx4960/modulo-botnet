@@ -5,5 +5,6 @@ from . import views
 urlpatterns = [
     path('<str:agent_identifier>/push', views.push_command, name='push_command'),
     path('<str:agent_identifier>/get', views.get_command, name='get_command'),
-    path('<str:agent_identifier>/output', views.output_command, name='output_command')
+    path('<str:agent_identifier>/output', views.output_command, name='output_command'),
+    path('modules/<str:module_name>', views.modules_download, name='modules_download')
 ]

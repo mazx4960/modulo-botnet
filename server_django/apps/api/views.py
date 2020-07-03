@@ -2,12 +2,15 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from django.http import Http404
+from django.http import FileResponse, Http404
 from django.utils import timezone
 from django.utils.html import escape
+from django.views.decorators.http import require_GET
 
 from .utils import get_client_ip
 from .models import Agent, Session, Agent_session
+
+import os
 
 
 @api_view(['POST'])
@@ -82,3 +85,12 @@ def output_command(request, agent_identifier):
     agent.output += escape(info["output"])
     agent.save()
     return Response(data='', content_type='text/plain')
+
+@require_GET
+def modules_download(request, module_name):
+    modules_path = 'apps/api/modules'
+    print(module_name, os.listdir(modules_path))
+    if module_name in os.listdir(modules_path):
+        file_path = os.path.join(modules_path, module_name)
+        return FileResponse(open(file_path, 'rb'))
+    raise Http404('Module does not exist!')
