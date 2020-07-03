@@ -96,3 +96,14 @@ class NmapTest(TestCase):
 
 class PipelineTest(TestCase):
     pass
+
+
+class APITest(TestCase):
+    def test_push_command(self):
+        pass
+
+    def test_get_command(self):
+        pass
+
+    def test_output_command(self):
+        pass

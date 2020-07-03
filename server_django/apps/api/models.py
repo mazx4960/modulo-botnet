@@ -1,11 +1,11 @@
 from django.db import models
-from datetime import datetime
+from django.utils import timezone
 
 
 class Agent(models.Model):
     id = models.AutoField(primary_key=True)
     display_name = models.CharField(max_length=100)
-    last_online = models.DateTimeField(default=datetime.now)
+    last_online = models.DateTimeField(default=timezone.now)
     remote_ip = models.GenericIPAddressField()
     operating_system = models.CharField(max_length=100)
     computer_name = models.CharField(max_length=100)
@@ -24,18 +24,18 @@ class Agent(models.Model):
         command = Command()
         command.agent = self
         command.cmdline = cmdline
-        command.timestamp = datetime.now()
+        command.timestamp = timezone.now()
         command.save()
 
     def is_online(self):
-        return (datetime.now() - self.last_online).seconds < 30
+        return (timezone.now() - self.last_online).seconds < 30
 
 
 class Command(models.Model):
     id = models.AutoField(primary_key=True)
     agent = models.ForeignKey(Agent, on_delete=models.CASCADE, related_name='commands')
     cmdline = models.CharField(max_length=255)
-    timestamp = models.DateTimeField(default=datetime.now)
+    timestamp = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.cmdline
@@ -43,7 +43,7 @@ class Command(models.Model):
 
 class Session(models.Model):
     id = models.AutoField(primary_key=True)
-    timestamp = models.DateTimeField(default=datetime.now)
+    timestamp = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return 'Session <{}>'.format(self.id)
