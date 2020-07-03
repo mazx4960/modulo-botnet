@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
 def login_view(request):
     if request.method == 'POST':
         login_form = AuthenticationForm(data=request.POST)
@@ -19,7 +18,6 @@ def login_view(request):
     return render(request, 'accounts/tlogin.html', {'login_form':login_form})
 
 
-# Create your views here.
 def tlogin_view(request):
     if request.method == 'POST':
         login_form = AuthenticationForm(data=request.POST)

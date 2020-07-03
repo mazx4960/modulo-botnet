@@ -1,5 +1,5 @@
 from . import module_class
-from .models import Agent
+from .models import Agent, Session, Agent_session
 
 
 class PipelineError(Exception):
@@ -11,16 +11,33 @@ class Pipeline(object):
 
     def __init__(self, agent_id_list):
         self.modules_loaded = []
+        self.agent_id_list = []
+
+    def create_session(self, agent_id_list):
+        session = Session()
+        session.save()
+
+        for agent_identifier in agent_id_list:
+            agent = Agent.objects.get(identifier=agent_identifier)
+            agent_session = Agent_session()
+            agent_session.agent = agent
+            agent_session.session = session
+            agent_session.save()
+
         self.agent_id_list = agent_id_list
 
-    def create_session(self):
-        pass
-
     def load_session(self, session_id):
-        pass
+        agent_sessions = Agent_session.objects.filter(session_id=session_id)
+
+        agent_id_list = []
+        for agent_session in agent_sessions:
+            agent_id_list.append(agent_session.agent.identifier)
+
+        self.agent_id_list = agent_id_list
 
     def destroy_session(self, session_id):
-        pass
+        Session.objects.filter(session_id=session_id).delete()
+        self.agent_id_list = []
 
     def load_module(self, module_name):
         if module_name in self.MODULE_LIST:

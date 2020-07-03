@@ -24,6 +24,28 @@ class AgentModelTest(TestCase):
 
 
 class NmapTest(TestCase):
+    def test_validate_command(self):
+        """
+        validate_command() would return a boolean depending on whether the nmap command is in the right format
+        """
+        nmap_test = nmap()
+
+        # Test cases
+        wrong_length_command = 'nmap'.split()
+        invalid_option_command = 'nmap -A 192.168.1.1 10000'.split()
+        bad_port_command = 'nmap -sS 192.168.1.1 100000'.split()
+        valid_command_1 = 'nmap -sS 192.168.1.1/24 1-65535'.split()
+        valid_command_2 = 'nmap -sS 192.168.1.1 1-65535'.split()
+        valid_command_3 = 'nmap -sS 192.168.1.1/24 10000'.split()
+
+        self.assertFalse(nmap_test.validate_command(wrong_length_command))
+        self.assertFalse(nmap_test.validate_command(invalid_option_command))
+        self.assertFalse(nmap_test.validate_command(bad_port_command))
+        self.assertTrue(nmap_test.validate_command(valid_command_1))
+        self.assertTrue(nmap_test.validate_command(valid_command_2))
+        self.assertTrue(nmap_test.validate_command(valid_command_3))
+
+
     def test_gather_hosts_from_cidr(self):
         """
         gather_hosts_from_cidr() would return a list of ip addresses from a given cidr notation

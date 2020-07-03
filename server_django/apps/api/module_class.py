@@ -1,5 +1,6 @@
 import re
 import ipaddress
+import argparse
 
 
 class nmapError(Exception):
@@ -15,6 +16,8 @@ class nmap(object):
     PORT = 3
     SCRIPT = 4
 
+    OPTION_LIST = ['-PR', '-PS', '-sS', '-sT', '-sU', '-sA', '-OT']
+
     def initialise(self, agent_list):
         """
         Initialise the module and ensure that all agents have nmap installed
@@ -24,6 +27,20 @@ class nmap(object):
         self.agent_list = agent_list
 
     def validate_command(self, command_list):
+        # checks if the length of the command list is valid
+        if len(command_list) != 4:
+            return False
+
+        # check if the first option is a valid one
+        option = command_list[self.OPTION]
+        if option not in self.OPTION_LIST:
+            return False
+
+        # check if the ports is in the right format
+        port = command_list[self.PORT]
+        if not re.match(r'^\d{1,5}(-\d{1,5})?$', port):
+            return False
+
         return True
 
     def parse_command(self, command):

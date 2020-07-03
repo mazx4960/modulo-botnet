@@ -3,7 +3,9 @@ from django.shortcuts import redirect, reverse, render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+
 from ..api.models import Agent
+from ..api.utils import Pipeline
 
 
 @login_required(login_url="accounts:tlogin")

@@ -2,10 +2,13 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from django.http import Http404
+
 from .utils import Pipeline
 from .models import Agent, Session, Agent_session
 
 from datetime import datetime
+import cgi
 
 
 @api_view(['POST'])
@@ -16,7 +19,13 @@ def push_command(request, agent_identifier):
     :param request:
     :return:
     """
-    pass
+    agent = Agent.objects.filter(identifier=agent_identifier)
+    if not agent:
+        raise Http404("Agent does not exist")
+
+    agent = Agent.objects.get(identifier=agent_identifier)
+    agent.push_cmd(request.form['cmdline'])
+    return ''
 
 
 @api_view(['POST'])
@@ -28,7 +37,6 @@ def get_command(request, agent_identifier):
     :param agent_identifier: The MAC address of the agent
     :return: the command to execute or ''
     """
-
     agent = Agent.objects.filter(identifier=agent_identifier)
     if not agent:
         agent = Agent.create(identifier=agent_identifier)
@@ -57,4 +65,21 @@ def get_command(request, agent_identifier):
 
 @api_view(['POST'])
 def output_command(request, agent_identifier):
-    pass
+    """
+    Extracts the output from the request, updates the database
+
+    :param request:
+    :param agent_identifier: The MAC address of the agent
+    :return:
+    """
+    agent = Agent.objects.filter(identifier=agent_identifier)
+    if not agent:
+        raise Http404("Agent does not exist")
+    else:
+        agent = Agent.objects.get(identifier=agent_identifier)
+
+    info = request.json
+    output = info["output"]
+    agent.output += cgi.escape(output)
+    agent.save()
+    return ''
