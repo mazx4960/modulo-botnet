@@ -2,7 +2,7 @@ import datetime
 
 from django.test import TestCase
 
-from .models import Agent, Command, User
+from .models import Agent
 from .module_class import nmap, nmapError
 
 class AgentModelTest(TestCase):
