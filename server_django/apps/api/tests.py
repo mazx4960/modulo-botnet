@@ -132,7 +132,7 @@ class APITest(TestCase):
         self.assertEqual(response.status_code, 200)
 
         # Check the response is an empty string
-        self.assertEqual(response.content, b'""')
+        self.assertEqual(response.content, b'{}')
 
         # Check the cmdline field is inserted into the database
         commands = self.test_agent.commands.filter(cmdline=sample_cmdline['cmdline'])
@@ -154,7 +154,7 @@ class APITest(TestCase):
         self.assertEqual(response.status_code, 200)
 
         # Check the response is an empty string
-        self.assertEqual(response.content, b'"{}"')
+        self.assertEqual(response.content, b'{}')
 
     def test_output_command(self):
         sample_output = {
@@ -169,7 +169,7 @@ class APITest(TestCase):
         self.assertEqual(response.status_code, 200)
 
         # Check the response is an empty string
-        self.assertEqual(response.content, b'""')
+        self.assertEqual(response.content, b'{}')
 
         # Check the cmdline field is inserted into the database
         self.test_agent.refresh_from_db()
@@ -208,5 +208,5 @@ class APITest(TestCase):
         self.assertEqual(response.status_code, 200)
 
         # Check the response is correct
-        response_cmdline = json.loads(response.content.decode().strip('"').replace('\\', ''))
+        response_cmdline = json.loads(response.content)
         self.assertDictEqual(response_cmdline, sample_cmdline)
