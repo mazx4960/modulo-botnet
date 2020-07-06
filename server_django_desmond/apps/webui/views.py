@@ -38,8 +38,8 @@ def agent_detail(request):
 @require_POST
 def create_session(request):
     agent_id_list = request.POST.getlist('selected_bots[]')
-    session_id = 1
-    # session_id = Pipeline().create_session(agent_id_list)
+    # session_id = 1
+    session_id = Pipeline().create_session(agent_id_list)
     return render(request, 'webui/session.html', {'selected_bots': agent_id_list, 'session_id': session_id})
 
 

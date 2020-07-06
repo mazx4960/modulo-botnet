@@ -18,7 +18,7 @@ class Pipeline(object):
         session.save()
 
         for agent_identifier in agent_id_list:
-            agent = Agent.objects.get(identifier=agent_identifier)
+            agent = Agent.objects.filter(identifier=agent_identifier)[0]
             agent_session = Agent_session()
             agent_session.agent = agent
             agent_session.session = session
