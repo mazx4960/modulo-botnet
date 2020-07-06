@@ -45,6 +45,8 @@ class Command(models.Model):
 class Session(models.Model):
     id = models.AutoField(primary_key=True)
     timestamp = models.DateTimeField(default=timezone.now)
+    # xiuqi added fields below #
+    session_dump = models.TextField(max_length=100000, default='')
 
     def __str__(self):
         return 'Session <{}>'.format(self.id)

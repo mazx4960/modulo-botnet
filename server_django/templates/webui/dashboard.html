@@ -1,23 +1,133 @@
 {% extends 'layout.html' %}
+{% load static %}
 
-{% block title %}
-<title>Dashboard</title>
+{% block custom_scripts %}
+<script type="text/Javascript">
+	function select_bots()
+	{
+		var selected_bots = new Array();
+		var select_bots_form_id = getElementById("select_bots_form");
+		var check = select_bots_form_id.getElementsByTagName("input");
+
+		for(var i=0; i<check.length; i++)
+		{
+			if (check[i].checked)
+			{
+				selected_bots.push(check[i].value);
+			}
+		}
+
+		if (selected_bots.length>0)
+		{
+			$.post("{% url 'webui:create_session' %}", selected_bots)
+
+		}
+	}
+</script>
+{% endblock %}
+
+{% block sidebar %}
+<div id="tmSideBar" class="col-xl-3 col-lg-4 col-md-12 col-sm-12 sidebar">
+
+	<button id="tmMainNavToggle" class="menu-icon">&#9776;</button>
+
+	<div class="inner">
+		<nav id="tmMainNav" class="tm-main-nav">
+			<ul>
+				<li>
+					<a id="Dashboard" class="scrolly active" data-bg-img="scathach.png" data-page="#tm-section-1">
+						<i class="fas fa-home tm-nav-fa-icon"></i>
+						<span>Dashboard</span>
+					</a>
+				</li>
+				<li>
+					<a id="Reports" class="scrolly" data-bg-img="jeanne alter.jpg" data-page="#tm-section-2" data-page-type="carousel">
+						<i class="fas fa-map tm-nav-fa-icon"></i>
+						<span>Reports</span>
+					</a>
+				</li>
+				<li>
+					<a id="Bots" class="scrolly" data-bg-img="jeanne darcs.jpg" data-page="#tm-section-3">
+						<i class="fas fa-users tm-nav-fa-icon"></i>
+						<span>Bots</span>
+					</a>
+				</li>
+				<li>
+					<form method="post" action="{% url 'accounts:logout' %}">{% csrf_token %}
+						<button type='submit' class="btn tm-btn-submit tm-btn ml-auto">Logout</button>
+					</form>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>
 {% endblock %}
 
 {% block content %}
-<h1>Logged in as {{ user }}</h1>
+<div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 tm-content">
+	<!-- section 1 -->
+	<section id="tm-section-1" class="tm-section">
+		<div class="ml-auto">
+			<header class="mb-4"><h1 class="tm-text-shadow">Dashboard</h1></header>
+			<p class="mb-5 tm-font-big">The dashboard of our botnet C&C, to add content.</p>
+			<a href="#" class="btn tm-btn tm-font-big" data-nav-link="#Reports">Continue</a>
+			<!-- data-nav-link holds the ID of nav item, which means this link should behave the same as that nav item  -->
+		</div>
+	</section>
 
-{% for agent in agents %}
-<ul>
-    <li>{{ agent.display_name }}: {{ agent.remote_ip }}</li>
-</ul>
-{% endfor %}
+	<!-- section 2 -->
+	<section id="tm-section-2" class="tm-section tm-section-carousel">
+		<div>
+			<header class="mb-4"><h2 class="tm-text-shadow">Saved Reports</h2></header>
+			<div class="tm-img-container">
+				<div class="tm-img-slider">
+					<a href="{% static 'img/okita alter portrait.jpg' %}" class="tm-slider-img"><img src="{% static 'img/okita alter portrait.jpg' %}" alt="Image" class="img-fluid"></a>
+					<a href="{% static 'img/jeanne alter portrait.png' %}" class="tm-slider-img"><img src="{% static 'img/jeanne alter portrait.png' %}" alt="Image" class="img-fluid"></a>
+				</div>
+			</div>
+		</div>
+	</section>
 
+	<!-- section 3 -->
+	<section id="tm-section-3" class="tm-section">
+		<div class="row mb-4">
+			<header class="col-xl-12"><h2 class="tm-text-shadow">Compromised Bots</h2></header>
+		</div>
 
-<form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
+		<form action="{% url 'webui:create_session' %}" method="post" class="contact-form" id="select_bots_form">{% csrf_token %}
+			<div class="botscroll">
+<!--							Add form tag here for radial button-->
+				<div class="form-group">
+				{% for agent in agents %}
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-12 bot_div_controller">
+					<div class="media tm-bg-transparent-black tm-border-white">
+						{% if "Windows" in agent.operating_system %}
+						<i class="fab fa-windows tm-icon-circled tm-icon-media bot_os_logo_padding"></i>
+						{% elif "Linux" in agent.operating_system %}
+						<i class="fab fa-linux tm-icon-circled tm-icon-media bot_os_logo_padding"></i>
+						{% elif "Android" in agent.operating_system %}
+						<i class="fab fa-android tm-icon-circled tm-icon-media bot_os_logo_padding"></i>
+						{% else %}
+						<i class="fab fa-linode tm-icon-circled tm-icon-media bot_os_logo_padding"></i>
+						{% endif %}
+						<div class="media-body">
+							<h3>{{ agent.remote_ip }}</h3>
+							<p>OS: {{ agent.operating_system }}</p>
+							<p>Username: {{ agent.username }}</p>
+							<p>Computer Name: {{ agent.computer_name }}</p>
+							<p>Last Online: {{ agent.last_online }}</p>
+						</div>
+					</div>
+					<div class="botcheckboxdiv">
+						<input type="checkbox" class="botcheckbox" value="{{ agent.identifier }}" name="selected_bots[]">
+					</div>
+				</div>
 
+				{% endfor %}
+			</div>
+		</div>
+			<button type="submit" class="btn tm-btn-submit tm-btn ml-auto" id="create_session">Create Session</button>
+		</form>
+	</section>
+</div>	<!-- .tm-content -->
 {% endblock %}
-

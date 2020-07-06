@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+
+{% block custom_scripts %}
+<script>
+	console.log('in');
+
+	function refresh_terminal() {
+
+	$.ajax({
+		method: "POST",
+		url: "{% url 'webui:refresh_terminal' %}",
+		data: {'session_id':{{ session_id }}, 'csrfmiddlewaretoken':'{{ csrf_token }}' },
+		success: function(data) {
+			console.log(data); // check out how data is structured
+			document.getElementById("output").value = data['session_output'];
+			window.setTimeout(function(){ refresh_terminal() }, 2000);
+		}
+	})
+	};
+
+	window.onload = function() {
+	  refresh_terminal();
+	};
+</script>
+{% endblock %}
+
+<!-- Sidebar -->
+{% block sidebar %}
+<div id="tmSideBar" class="col-xl-3 col-lg-4 col-md-12 col-sm-12 sidebar">
+
+	<button id="tmMainNavToggle" class="menu-icon">&#9776;</button>
+
+	<div class="inner">
+		<nav id="tmMainNav" class="tm-main-nav">
+			<ul>
+				<li>
+					<a id="Instructions" class="scrolly active" data-bg-img="jeanne mirrors.png" data-page="#tm-section-1">
+						<i class="fas fa-comments tm-nav-fa-icon"></i>
+						<span>Instructions</span>
+					</a>
+				</li>
+				<li>
+					<form method="post" action="{% url 'webui:dashboard' %}">{% csrf_token %}
+						<button type='submit' class="btn tm-btn-submit tm-btn ml-auto" style="margin-bottom: 5%;">< Dashboard</button>
+					</form>
+				</li>
+				<li>
+					<form method="post" action="{% url 'accounts:logout' %}">{% csrf_token %}
+						<button type='submit' class="btn tm-btn-submit tm-btn ml-auto">Logout</button>
+					</form>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 tm-content">
+	<!-- section 4 -->
+	<section id="tm-section-1" class="tm-section">
+		<div class="tm-bg-transparent-black tm-contact-box-pad">
+			<div class="row mb-4">
+				<div class="col-sm-12">
+					<header><h2 class="tm-text-shadow">Session #{{ session_id }}</h2></header>
+				</div>
+			</div>
+			<div class="row tm-page-4-content">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 tm-contact-col">
+					<div class="contact_message">
+						<textarea id="output" name="output" class="form-control terminal_output" rows="9" readonly>(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)</textarea>
+					</div>
+				</div>
+				<div class="col-md-12 col-sm-12 tm-contact-col">
+					<div class="contact_message">
+						<form action="{% url 'webui:create_session' %}" method="post" class="contact-form">
+							<div class="form-group">{% csrf_token %}
+								<input id="terminal" name="terminal" class="form-control terminal" placeholder="> ">
+							</div>
+							<button type="submit" class="btn tm-btn-submit tm-btn ml-auto">Send Instruction</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>	<!-- .tm-content -->
+{% endblock %}

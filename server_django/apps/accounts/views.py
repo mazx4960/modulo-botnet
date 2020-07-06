@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
 
+# Create your views here.
 def login_view(request):
     if request.method == 'POST':
         login_form = AuthenticationForm(data=request.POST)
@@ -12,26 +13,13 @@ def login_view(request):
             # login user
             requested_user = login_form.get_user()
             login(request, requested_user)
-            return redirect('webui:index')
+            return redirect('webui:dashboard')
     else:
         login_form = AuthenticationForm()
-    return render(request, 'accounts/tlogin.html', {'login_form':login_form})
+    return render(request, 'accounts/login.html', {'login_form':login_form})
 
 
-def tlogin_view(request):
-    if request.method == 'POST':
-        login_form = AuthenticationForm(data=request.POST)
-        if login_form.is_valid():
-            # login user
-            requested_user = login_form.get_user()
-            login(request, requested_user)
-            return redirect('webui:test')
-    else:
-        login_form = AuthenticationForm()
-    return render(request, 'accounts/tlogin.html', {'login_form':login_form})
-
-
-@login_required(login_url="accounts:tlogin")
+@login_required(login_url="accounts:login")
 def logout_view(request):
     logout(request)
-    return redirect('accounts:tlogin')
+    return redirect('accounts:login')

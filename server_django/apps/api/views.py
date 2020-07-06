@@ -86,6 +86,7 @@ def output_command(request, agent_identifier):
     agent.save()
     return Response(data='', content_type='text/plain')
 
+
 @require_GET
 def modules_download(request, module_name):
     """
