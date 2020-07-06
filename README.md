@@ -39,11 +39,14 @@ to be completed
 - [x] Login
 - [x] Dashboard
     - [x] List of known compromised machines
-    - [ ] Send Instruction
-        - [ ] Select target agent(s)
-        - [ ] Select from preconfigured list of commands (scan <>, download <>, run <>, ...)
-        - [ ] Wait and receive output (if necessary)
-- [ ] Style sheets
+- [x] Sessions
+    - [x] Select target agent(s)
+    - [x] Send Instruction
+    - [x] Wait and receive output (if necessary)
+    - [ ] Viewing other sessions
+- [ ] Executing commands on individual agents
+
+- [x] Style sheets
 - [ ] Generate report (.txt) for discovered hosts and respective ports
 - [ ] Save and view past reports
 - [ ] Build a network tree that showcases compromised machines
