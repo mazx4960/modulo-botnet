@@ -2,7 +2,7 @@
 <h6 align="center"><i>Simple POC Botnet done by Group 1</i></h6>
 
 <p align="center">
- <img src="https://img.shields.io/badge/last%20updated-June%202020-3d62d1">
+ <img src="https://img.shields.io/badge/last%20updated-July%202020-3d62d1">
  <img src="https://img.shields.io/pypi/pyversions/Django">
  <img src="https://img.shields.io/github/downloads/notclement/botnet-enumeration-network/total">
  <img src="https://github.com/notclement/botnet-enumeration-network/workflows/Django%20CI/badge.svg">
