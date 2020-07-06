@@ -3,6 +3,7 @@
 
 <p align="center">
  <img src="https://img.shields.io/badge/last%20updated-June%202020-3d62d1">
+ <img src="https://img.shields.io/pypi/pyversions/Django">
  <img src="https://img.shields.io/github/downloads/notclement/botnet-enumeration-network/total">
  <img src="https://github.com/notclement/botnet-enumeration-network/workflows/Django%20CI/badge.svg">
 </p>
