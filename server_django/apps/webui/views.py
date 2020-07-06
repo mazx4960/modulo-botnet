@@ -12,7 +12,9 @@ from ..api.utils import Pipeline
 @login_required(login_url="accounts:login")
 def dashboard(request):
     compromised_agents = Agent.objects.all()
-    return render(request, 'webui/dashboard.html', {'agents':compromised_agents})
+    sessions = Session.objects.all()
+    outputs = Output.objects.all()
+    return render(request, 'webui/dashboard.html', {'agents':compromised_agents, 'sessions':sessions, 'outputs':outputs})
 
 
 @login_required
@@ -49,6 +51,8 @@ def view_session(request, session_id):
     :return:
     """
     agent_id_list = Pipeline().load_session(session_id)
+    print(session_id)
+    # Not displaying the selected_bots as of now, can be added in the future
     return render(request, 'webui/session.html', {'selected_bots': agent_id_list, 'session_id': session_id})
 
 

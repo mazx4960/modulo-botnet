@@ -41,9 +41,9 @@
 					</a>
 				</li>
 				<li>
-					<a id="Reports" class="scrolly" data-bg-img="jeanne alter.jpg" data-page="#tm-section-2" data-page-type="carousel">
+					<a id="Sessions" class="scrolly" data-bg-img="jeanne alter.jpg" data-page="#tm-section-2" data-page-type="carousel">
 						<i class="fas fa-map tm-nav-fa-icon"></i>
-						<span>Reports</span>
+						<span>Sessions</span>
 					</a>
 				</li>
 				<li>
@@ -70,7 +70,7 @@
 		<div class="ml-auto">
 			<header class="mb-4"><h1 class="tm-text-shadow">Dashboard</h1></header>
 			<p class="mb-5 tm-font-big">The dashboard of our botnet C&C, to add content.</p>
-			<a href="#" class="btn tm-btn tm-font-big" data-nav-link="#Reports">Continue</a>
+			<a href="#" class="btn tm-btn tm-font-big" data-nav-link="#Sessions">Continue</a>
 			<!-- data-nav-link holds the ID of nav item, which means this link should behave the same as that nav item  -->
 		</div>
 	</section>
@@ -78,11 +78,25 @@
 	<!-- section 2 -->
 	<section id="tm-section-2" class="tm-section tm-section-carousel">
 		<div>
-			<header class="mb-4"><h2 class="tm-text-shadow">Saved Reports</h2></header>
+			<header class="mb-4"><h2 class="tm-text-shadow">Saved Sessions</h2></header>
 			<div class="tm-img-container">
 				<div class="tm-img-slider">
-					<a href="{% static 'img/okita alter portrait.jpg' %}" class="tm-slider-img"><img src="{% static 'img/okita alter portrait.jpg' %}" alt="Image" class="img-fluid"></a>
-					<a href="{% static 'img/jeanne alter portrait.png' %}" class="tm-slider-img"><img src="{% static 'img/jeanne alter portrait.png' %}" alt="Image" class="img-fluid"></a>
+					{% for session in sessions %}
+					<a href="{% url 'webui:view_session' session.id %}" class="tm-slider-img tm-border-white report_view">
+						<div>
+							<h1 style="text-align: center;">{{ session.id }}</h1>
+							{% for output in outputs %}
+								{% if session.id == output.session_id %}
+								<p class="report">
+									{{ output.output }}
+								</p>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</a>
+					{% endfor %}
+<!--					<a href="{% static 'img/okita alter portrait.jpg' %}" class="tm-slider-img"><img src="{% static 'img/okita alter portrait.jpg' %}" alt="Image" class="img-fluid"></a>-->
+<!--					<a href="{% static 'img/jeanne alter portrait.png' %}" class="tm-slider-img"><img src="{% static 'img/jeanne alter portrait.png' %}" alt="Image" class="img-fluid"></a>-->
 				</div>
 			</div>
 		</div>
