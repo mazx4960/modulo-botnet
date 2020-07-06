@@ -20,16 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47d9d3bf-29db-44fc-9565-ed4d27b192db" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server_django/apps/api/migrations/0010_auto_20200706_1535.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server_django/apps/api/migrations/0011_auto_20200706_1606.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/api/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/webui/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/webui/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/db.sqlite3" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,14 +53,14 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\apps\api\modules" />
+      <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\apps" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\static" />
       <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\templates" />
       <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\static\css" />
-      <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\apps" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\apps\api\modules" />
       <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\apps" />
     </key>
   </component>
