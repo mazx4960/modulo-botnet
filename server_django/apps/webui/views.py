@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
-from ..api.models import Agent, Session
+from ..api.models import Agent, Session, Output
 from ..api.utils import Pipeline
 
 
@@ -59,7 +59,11 @@ def refresh_terminal(request):
     if request.is_ajax():
         # Get data from db again
         session_id = request.POST.get('session_id')
-        stored_sessions = Session.objects.all()
-        for session in stored_sessions:
-            if str(session.id) == session_id:
-                return JsonResponse({'session_output': str(session.session_dump)})
+        session_outputs = Output.objects.filter(session_id=session_id)
+
+        full_output = ''
+        for session_output in session_outputs:
+            output = '\nAgent: <{}>\n{}\n{}\n'.format(session_output.agent.identifier, '='*20, session_output.output)
+            full_output += output
+
+        return JsonResponse({'session_output': full_output})

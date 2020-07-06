@@ -2,10 +2,12 @@ from django.test import TestCase, Client
 from django.utils import timezone
 
 from .models import Agent
+from .utils import Pipeline
 from .module_class import nmap, nmapError
 
 import datetime
 from urllib.parse import urlencode
+import json
 
 
 class AgentModelTest(TestCase):
@@ -113,9 +115,13 @@ class APITest(TestCase):
         self.test_agent.protocol = 'http'
         self.test_agent.save()
 
+        # Initialise the session
+        self.session_id = Pipeline().create_session([self.TEST_IDENTIFIER])
+
     def test_push_command(self):
         sample_cmdline = {
-            'cmdline': 'whoami'
+            'cmdline': 'whoami',
+            'session_id': 1,
         }
 
         # Send the post request
@@ -148,7 +154,7 @@ class APITest(TestCase):
         self.assertEqual(response.status_code, 200)
 
         # Check the response is an empty string
-        self.assertEqual(response.content, b'""')
+        self.assertEqual(response.content, b'"{}"')
 
     def test_output_command(self):
         sample_output = {
@@ -156,8 +162,8 @@ class APITest(TestCase):
         }
 
         # Send the post request
-        response = self.client.post('/api/{}/output'.format(self.TEST_IDENTIFIER), urlencode(sample_output),
-                                    content_type='application/x-www-form-urlencoded')
+        response = self.client.post('/api/{}/{}/output'.format(self.TEST_IDENTIFIER, self.session_id),
+                                    urlencode(sample_output), content_type='application/x-www-form-urlencoded')
 
         # Check that the response is 200 OK.
         self.assertEqual(response.status_code, 200)
@@ -167,35 +173,40 @@ class APITest(TestCase):
 
         # Check the cmdline field is inserted into the database
         self.test_agent.refresh_from_db()
-        output = self.test_agent.output
+        output = self.test_agent.outputs.order_by('-timestamp')[0].output
         self.assertIn(sample_output['output'], output)
 
     def test_push_then_get_command(self):
         agent_identifier = 'aaaaaaaaaaaa'
+
         sample_data = {
             'operating_system': 'Windows',
             'computer_name': 'Work-PC',
             'username': 'test_user_2'
         }
 
-        sample_cmdline = {
-            'cmdline': 'it works!'
-        }
-
         # Send the post request to create the test user
         self.client.post('/api/{}/get'.format(agent_identifier), urlencode(sample_data),
-                                    content_type='application/x-www-form-urlencoded')
+                         content_type='application/x-www-form-urlencoded')
+
+        # Initialise the session
+        session_id = Pipeline().create_session([agent_identifier])
+        sample_cmdline = {
+            'cmdline': 'it works!',
+            'session_id': session_id,
+        }
 
         # Send the post request for push command
         self.client.post('/api/{}/push'.format(agent_identifier), urlencode(sample_cmdline),
                          content_type='application/x-www-form-urlencoded')
 
         # Send the post request to get the newly pushed command
-        response = self.client.post('/api/{}/get'.format(agent_identifier), urlencode(sample_data),
+        response = self.client.post('/api/{}/get'.format(agent_identifier,), urlencode(sample_data),
                                     content_type='application/x-www-form-urlencoded')
 
         # Check that the response is 200 OK.
         self.assertEqual(response.status_code, 200)
 
-        # Check the response is an empty string
-        self.assertEqual(response.content, '"{}"'.format(sample_cmdline['cmdline']).encode())
+        # Check the response is correct
+        response_cmdline = json.loads(response.content.decode().strip('"').replace('\\', ''))
+        self.assertDictEqual(response_cmdline, sample_cmdline)
