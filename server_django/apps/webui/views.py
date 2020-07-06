@@ -75,11 +75,12 @@ def send_instruction(request):
     """
     Function to handle refresh requests from session page
     """
-    if request.method == 'POST':
-        session_id = request.POST.get('sid')
-        command = request.POST.get('terminal')
-        print('Session <{0}>: {1}'.format(session_id, command))
+    session_id = request.POST.get('sid')
+    command = request.POST.get('terminal')
+    print('Session <{0}>: {1}'.format(session_id, command))
 
-        command_pipe_obj = Pipeline()
-        command_pipe_obj.load_session(session_id)
-        command_pipe_obj.run(commandline=command)
+    command_pipe_obj = Pipeline()
+    command_pipe_obj.load_session(session_id)
+    command_pipe_obj.run(commandline=command)
+
+    return redirect(reverse('webui:view_session', args=(session_id, )))

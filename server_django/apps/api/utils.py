@@ -12,6 +12,7 @@ class Pipeline(object):
     def __init__(self):
         self.modules_loaded = []
         self.agent_id_list = []
+        self.session_id = 0
 
     def create_session(self, agent_id_list):
         session = Session()
@@ -25,6 +26,7 @@ class Pipeline(object):
             agent_session.save()
 
         self.agent_id_list = agent_id_list
+        self.session_id = session.id
 
         return session.id
 
@@ -36,6 +38,7 @@ class Pipeline(object):
             agent_id_list.append(agent_session.agent.identifier)
 
         self.agent_id_list = agent_id_list
+        self.session_id = session_id
 
         return agent_id_list
 
@@ -61,7 +64,7 @@ class Pipeline(object):
                 self.run_individual(agent_id, workloads[agent_id])
 
     def run_individual(self, agent_id, commandline):
-        Agent.objects.get(identifier=agent_id).push_cmd(commandline)
+        Agent.objects.get(identifier=agent_id).push_cmd(commandline, self.session_id)
 
     def run(self, commandline):
         command = commandline.split()[0]
