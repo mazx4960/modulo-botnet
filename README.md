@@ -45,7 +45,6 @@ to be completed
     - [x] Wait and receive output (if necessary)
     - [ ] Viewing other sessions
 - [ ] Executing commands on individual agents
-
 - [x] Style sheets
 - [ ] Generate report (.txt) for discovered hosts and respective ports
 - [ ] Save and view past reports
