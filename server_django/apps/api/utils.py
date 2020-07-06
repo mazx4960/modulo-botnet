@@ -61,7 +61,7 @@ class Pipeline(object):
                 self.run_individual(agent_id, workloads[agent_id])
 
     def run_individual(self, agent_id, commandline):
-        Agent.objects.get(id=agent_id).push_cmd(commandline)
+        Agent.objects.get(identifier=agent_id).push_cmd(commandline)
 
     def run(self, commandline):
         command = commandline.split()[0]

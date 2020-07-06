@@ -11,5 +11,6 @@ urlpatterns = [
     path('agent_terminal/<int:agent_id>/', views.agent_detail, name='agent_detail'),
     path('create_session/', views.create_session, name='create_session'),
     path('refresh_terminal/', views.refresh_terminal, name='refresh_terminal'),
+    path('send_instruction/', views.send_instruction, name='send_instruction'),
     path('session/<int:session_id>/', views.view_session, name='view_session'),
 ]

@@ -1,9 +1,8 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block custom_scripts %}
-<script>
-	console.log('in');
-
+<script type="text/Javascript">
 	function refresh_terminal() {
 
 	$.ajax({
@@ -34,7 +33,7 @@
 		<nav id="tmMainNav" class="tm-main-nav">
 			<ul>
 				<li>
-					<a id="Instructions" class="scrolly active" data-bg-img="jeanne mirrors.png" data-page="#tm-section-1">
+					<a id="Instructions" class="scrolly active" data-bg-img="scathach.png" data-page="#tm-section-1">
 						<i class="fas fa-comments tm-nav-fa-icon"></i>
 						<span>Instructions</span>
 					</a>
@@ -68,14 +67,15 @@
 			<div class="row tm-page-4-content">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 tm-contact-col">
 					<div class="contact_message">
-						<textarea id="output" name="output" class="form-control terminal_output" rows="9" readonly>(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)(temporary text placeholder, remove when trying to display agent output)</textarea>
+						<textarea id="output" name="output" class="form-control terminal_output" rows="9" readonly></textarea>
 					</div>
 				</div>
 				<div class="col-md-12 col-sm-12 tm-contact-col">
 					<div class="contact_message">
-						<form action="{% url 'webui:create_session' %}" method="post" class="contact-form">
+						<form action="{% url 'webui:send_instruction' %}" method="post" class="contact-form">
 							<div class="form-group">{% csrf_token %}
 								<input id="terminal" name="terminal" class="form-control terminal" placeholder="> ">
+								<input id="sid" name="sid" value="{{ session_id }}" hidden>
 							</div>
 							<button type="submit" class="btn tm-btn-submit tm-btn ml-auto">Send Instruction</button>
 						</form>
@@ -85,4 +85,8 @@
 		</div>
 	</section>
 </div>	<!-- .tm-content -->
+{% endblock %}
+
+{% block custom_FIRST_NAVBAR %}
+var bgImg = $("#Instructions").data("bgImg");
 {% endblock %}

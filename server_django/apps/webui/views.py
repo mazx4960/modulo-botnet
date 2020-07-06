@@ -52,6 +52,7 @@ def view_session(request, session_id):
     return render(request, 'webui/session.html', {'selected_bots': agent_id_list, 'session_id': session_id})
 
 
+@require_POST
 def refresh_terminal(request):
     """
     Function to handle refresh requests from session page
@@ -67,3 +68,18 @@ def refresh_terminal(request):
             full_output += output
 
         return JsonResponse({'session_output': full_output})
+
+
+@require_POST
+def send_instruction(request):
+    """
+    Function to handle refresh requests from session page
+    """
+    if request.method == 'POST':
+        session_id = request.POST.get('sid')
+        command = request.POST.get('terminal')
+        print('Session <{0}>: {1}'.format(session_id, command))
+
+        command_pipe_obj = Pipeline()
+        command_pipe_obj.load_session(session_id)
+        command_pipe_obj.run(commandline=command)

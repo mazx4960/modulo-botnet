@@ -158,7 +158,6 @@ http://www.tooplate.com/view/2102-constructive
 
 		// Change background image
 		var bgImg = currentNavItem.data("bgImg");
-<!--	    	$.backstretch("../templates/img/" + bgImg);-->
 		$.backstretch("{% static 'img/' %}" + bgImg);
 
 	}
@@ -223,9 +222,11 @@ http://www.tooplate.com/view/2102-constructive
 			$("#tm-section-1").fadeIn();
 
 			// Set up background first page
-			var bgImg = $("#Dashboard").data("bgImg");
 
-<!--		     	$.backstretch("../templates/img/" + bgImg, {fade: 500});-->
+			{% block custom_FIRST_NAVBAR %}
+
+			{% endblock %}
+
 			$.backstretch("{% static 'img/' %}" + bgImg, {fade: 500});
 			// Setup Carousel, Nav, and Nav Toggle
 			setupCarousel();
