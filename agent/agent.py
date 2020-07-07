@@ -28,8 +28,7 @@ API_METHOD_OUTPUT = 'output'
 C2 = r'http://127.0.0.1:8000/api/{}/{}'
 # C2_MODULES_PATH = r'https://github.com/notclement/botnet-enumeration-network/raw/master/server_django/apps/api/modules/{}'
 C2_MODULES_PATH = r'http://127.0.0.1:8000/api/modules/{}'
-# DISK_PATH = "{}\\WinUpdate".format(os.getenv('LOCALAPPDATA'))
-DISK_PATH = r'test'
+DISK_PATH = "{}\\WinUpdate".format(os.getenv('LOCALAPPDATA'))
 HEADERS = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
 
