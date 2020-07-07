@@ -8,6 +8,7 @@ from .module_class import nmap, nmapError
 import datetime
 from urllib.parse import urlencode
 import json
+import os
 
 
 class AgentModelTest(TestCase):
@@ -33,7 +34,7 @@ class NmapTest(TestCase):
         """
         validate_command() would return a boolean depending on whether the nmap command is in the right format
         """
-        nmap_test = nmap()
+        nmap_test = nmap([])
 
         # Test cases
         wrong_length_command = 'nmap'.split()
@@ -54,7 +55,7 @@ class NmapTest(TestCase):
         """
         gather_hosts_from_cidr() would return a list of ip addresses from a given cidr notation
         """
-        nmap_test = nmap()
+        nmap_test = nmap([])
 
         # Test cases
         single_ip_addr = '192.168.1.1'
@@ -74,9 +75,8 @@ class NmapTest(TestCase):
         self.assertRaises(nmapError, nmap_test.gather_hosts_from_cidr, bad_cidr_3)
 
     def test_parse_commands(self):
-        nmap_test = nmap()
         sample_agent_list = [1, 2, 3]
-        nmap_test.initialise(sample_agent_list)
+        nmap_test = nmap(sample_agent_list)
 
         # Test cases
         test_command = 'nmap -PS 192.168.1.1 1-10000'
@@ -146,6 +146,7 @@ class APITest(TestCase):
             'username': 'test_user'
         }
 
+        print(os.getcwd())
         # Send the post request
         response = self.client.post('/api/{}/get'.format(agent_identifier), urlencode(sample_data),
                                     content_type='application/x-www-form-urlencoded')
