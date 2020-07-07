@@ -139,7 +139,9 @@ class Pipeline(object):
             # load a new module
             elif command == 'load' and len(command_list) == 2 and command_list[1] in self.MODULE_LIST:
                 self.load_module(command_list[1])
-                raise Exception('Module <{}> loaded'.format(command_list[1]))
+
+                for agent_id in self.agent_id_list:
+                    self.run_individual(agent_id, commandline)
 
             # run in a normal cmdline
             else:
