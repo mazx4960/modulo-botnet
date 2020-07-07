@@ -146,7 +146,6 @@ class APITest(TestCase):
             'username': 'test_user'
         }
 
-        print(os.getcwd())
         # Send the post request
         response = self.client.post('/api/{}/get'.format(agent_identifier), urlencode(sample_data),
                                     content_type='application/x-www-form-urlencoded')

@@ -5,13 +5,15 @@ import pickle
 import os
 
 
-PICKLE_DIR = 'apps/api/pickles'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+API_DIR = 'api'
+PICKLE_DIR = 'pickles'
 ERR_IDENTIFIER = '[!] Error'
 
 
 def store_data(data, session_id):
     filename = 'pickle_{}'.format(session_id)
-    filepath = os.path.join(PICKLE_DIR, filename)
+    filepath = os.path.join(BASE_DIR, API_DIR, PICKLE_DIR, filename)
     with open(filepath, 'wb') as pickle_file:
         pickle.dump(data, pickle_file)
 

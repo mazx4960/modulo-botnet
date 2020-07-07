@@ -20,10 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47d9d3bf-29db-44fc-9565-ed4d27b192db" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server_django/apps/api/pickles/pickle_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server_django/apps/api/pickles/pickle_2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_django/apps/api/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/apps/api/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
