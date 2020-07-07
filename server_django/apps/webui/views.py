@@ -38,6 +38,21 @@ def create_session(request):
 
 
 @login_required(login_url="accounts:login")
+@require_POST
+def delete_session(request):
+    """
+    Deletes the specified session (id) and redirects the webpage to the dashboard
+
+    :param request:
+    :return:
+    """
+    session_id = request.POST.getlist('del_sid')[0]
+    destroy_session_obj = Pipeline()
+    destroy_session_obj.destroy_session(int(session_id))
+    return redirect(reverse('webui:dashboard'))
+
+
+@login_required(login_url="accounts:login")
 def view_session(request, session_id):
     """
     Returns the view session page which dynamically refresh the agents output

@@ -65,6 +65,7 @@
 				</div>
 			</div>
 			<div class="row tm-page-4-content">
+
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 tm-contact-col">
 					<div class="contact_message">
 						<textarea id="output" name="output" class="form-control terminal_output" rows="9" readonly></textarea>
@@ -78,6 +79,12 @@
 								<input id="sid" name="sid" value="{{ session_id }}" hidden>
 							</div>
 							<button type="submit" class="btn tm-btn-submit tm-btn ml-auto">Send Instruction</button>
+						</form>
+						<form action="{% url 'webui:delete_session' %}" method="post" class="contact-form">
+							<div class="form-group" style="margin-top:2vh;">{% csrf_token %}
+								<input id="del_sid" name="del_sid" value="{{ session_id }}" hidden>
+								<button type="submit" class="btn tm-btn-submit tm-btn ml-auto">Delete Session</button>
+							</div>
 						</form>
 					</div>
 				</div>

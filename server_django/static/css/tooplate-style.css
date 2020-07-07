@@ -50,11 +50,13 @@ p:last-child { margin-bottom: 0; }
 }
 
 .report{
-    overflow-y:auto;
+    margin-left: 2vh;
+    margin-right: 2vh;
 }
 
 .report_view{
     height:60vh;
+    overflow-y:auto;
 }
 
 .tm-bg-transparent-black {
