@@ -11,7 +11,6 @@ from .utils import get_client_ip
 from .models import Agent, Session, Agent_session, Output
 
 import os
-import json
 
 
 @api_view(['POST'])

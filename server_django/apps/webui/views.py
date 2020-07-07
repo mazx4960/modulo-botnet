@@ -17,14 +17,10 @@ def dashboard(request):
     return render(request, 'webui/dashboard.html', {'agents':compromised_agents, 'sessions':sessions, 'outputs':outputs})
 
 
-@login_required
-def agent_list(request):
-    pass
-
-
-@login_required
-def agent_detail(request):
-    pass
+@login_required(login_url="accounts:login")
+def agent_terminal(request, agent_identifier):
+    session_id = Pipeline().create_session([agent_identifier])
+    return redirect(reverse('webui:view_session', args=(session_id,)))
 
 
 @login_required(login_url="accounts:login")
@@ -55,6 +51,7 @@ def view_session(request, session_id):
     return render(request, 'webui/session.html', {'selected_bots': agent_id_list, 'session_id': session_id})
 
 
+@login_required(login_url="accounts:login")
 @require_POST
 def refresh_terminal(request):
     """
@@ -73,6 +70,7 @@ def refresh_terminal(request):
         return JsonResponse({'session_output': full_output})
 
 
+@login_required(login_url="accounts:login")
 @require_POST
 def send_instruction(request):
     """
