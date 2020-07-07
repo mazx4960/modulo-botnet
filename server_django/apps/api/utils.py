@@ -100,7 +100,7 @@ class Pipeline(object):
         return agent_id_list
 
     def destroy_session(self, session_id):
-        Session.objects.filter(session_id=session_id).delete()
+        Session.objects.filter(id=session_id).delete()
         self.agent_id_list = []
 
     def load_module(self, module_name):
