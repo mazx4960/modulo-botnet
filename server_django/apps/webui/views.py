@@ -6,12 +6,12 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
 from ..api.models import Agent, Session, Output
-from ..api.utils import Pipeline
+from ..api.utils import ERR_IDENTIFIER, Pipeline
 
 
 @login_required(login_url="accounts:login")
 def dashboard(request):
-    compromised_agents = Agent.objects.all()
+    compromised_agents = Agent.objects.all().exclude(identifier=ERR_IDENTIFIER)
     sessions = Session.objects.all()
     outputs = Output.objects.all()
     return render(request, 'webui/dashboard.html', {'agents':compromised_agents, 'sessions':sessions, 'outputs':outputs})
@@ -51,7 +51,6 @@ def view_session(request, session_id):
     :return:
     """
     agent_id_list = Pipeline().load_session(session_id)
-    print(session_id)
     # Not displaying the selected_bots as of now, can be added in the future
     return render(request, 'webui/session.html', {'selected_bots': agent_id_list, 'session_id': session_id})
 
@@ -68,7 +67,7 @@ def refresh_terminal(request):
 
         full_output = ''
         for session_output in session_outputs:
-            output = '\nAgent: <{}>\n{}\n{}\n'.format(session_output.agent.identifier, '='*20, session_output.output)
+            output = '\n{}\n{}\n{}\n'.format(session_output.agent.display_name, '='*20, session_output.output)
             full_output += output
 
         return JsonResponse({'session_output': full_output})

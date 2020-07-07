@@ -18,13 +18,13 @@ class nmap(object):
 
     OPTION_LIST = ['-PR', '-PS', '-sS', '-sT', '-sU', '-sA', '-OT']
 
-    def initialise(self, agent_list):
+    def __init__(self, agent_id_list):
         """
         Initialise the module and ensure that all agents have nmap installed
         :param agent_list: a list of agent ids
         :return: None
         """
-        self.agent_list = agent_list
+        self.agent_list = agent_id_list
 
     def validate_command(self, command_list):
         # checks if the length of the command list is valid
