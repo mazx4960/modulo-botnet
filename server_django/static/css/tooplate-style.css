@@ -49,6 +49,14 @@ p:last-child { margin-bottom: 0; }
     display: flex;
 }
 
+.report{
+    overflow-y:auto;
+}
+
+.report_view{
+    height:60vh;
+}
+
 .tm-bg-transparent-black {
     background-color: rgba(0,0,0,0.25);    
     padding: 30px;
@@ -301,7 +309,7 @@ p:last-child { margin-bottom: 0; }
 
 .col-md-6.tm-contact-col { margin-bottom: 0; }
 
-.tm-img-slider { max-width: 940px; }
+.tm-img-slider { max-width: 1100px; }
 #tm-section-1 { max-width: 700px; }
 
 .tm-icon-media {

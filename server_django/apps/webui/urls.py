@@ -13,4 +13,5 @@ urlpatterns = [
     path('refresh_terminal/', views.refresh_terminal, name='refresh_terminal'),
     path('send_instruction/', views.send_instruction, name='send_instruction'),
     path('session/<int:session_id>/', views.view_session, name='view_session'),
+
 ]
