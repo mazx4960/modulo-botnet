@@ -1,4 +1,6 @@
 import os
+from os import listdir
+from os.path import isfile, join
 import zipfile
 
 import requests
@@ -21,17 +23,13 @@ def download_module(module_name):
 
 def get_loaded_modules():
     root = DISK_PATH
-    return [item for item in os.listdir(root) if
-            os.path.isdir(os.path.join(root, item))]
+    return [f for f in listdir(root) if isfile(join(root, f)) and f.endswith('.exe')]
 
 
 def main():
-    folder_name = 'nmap'
-    # if folder_name in get_loaded_modules():
-    #     print('{} is on disk'.format(folder_name))
-    # else:
-    #     print('{} is not on disk'.format(folder_name))
-    download_module(folder_name)
+    # nmap -sS 127.0.0.0/24 80-160
+    output_module = os.popen('{}\\{}'.format(DISK_PATH, 'nmap -sS 127.0.0.0/28 80'.replace('nmap', 'nmap.exe')))
+    print(output_module.read())
 
 
 if __name__ == '__main__':

