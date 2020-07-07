@@ -10,7 +10,7 @@ class Pipeline(object):
     MODULE_LIST = ['nmap']
 
     def __init__(self):
-        self.modules_loaded = []
+        self.modules_loaded = {}
         self.agent_id_list = []
         self.session_id = 0
 
@@ -67,9 +67,19 @@ class Pipeline(object):
         Agent.objects.get(identifier=agent_id).push_cmd(commandline, self.session_id)
 
     def run(self, commandline):
-        command = commandline.split()[0]
+        command_list = commandline.split()
+        command = command_list[0]
+
+        # run a loaded module
         if command in self.MODULE_LIST:
-            self.module_handler(command, commandline)
+            if command in self.modules_loaded:
+                self.module_handler(command, commandline)
+
+        # load a new module
+        elif command == 'load' and len(command_list) == 2 and command_list[1] in self.MODULE_LIST:
+            self.load_module(command_list[1])
+
+        # run in a normal cmdline
         else:
             for agent_id in self.agent_id_list:
                 self.run_individual(agent_id, commandline)

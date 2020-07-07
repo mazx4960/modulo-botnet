@@ -77,7 +77,6 @@ def send_instruction(request):
     """
     session_id = request.POST.get('sid')
     command = request.POST.get('terminal')
-    print('Session <{0}>: {1}'.format(session_id, command))
 
     command_pipe_obj = Pipeline()
     command_pipe_obj.load_session(session_id)
