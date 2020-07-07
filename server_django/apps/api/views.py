@@ -116,3 +116,26 @@ def modules_download(request, module_name):
         return FileResponse(module_file)
 
     raise Http404('Module does not exist!')
+
+
+@require_GET
+def payloads_download(request, payload_name):
+    """
+    Allows agents to download modules from the server in zip format
+
+    :param request:
+    :param module_name: name of the module
+    :return: the fileresponse object if the file is valid
+    """
+    payload_dir = 'payloads'
+    payload_path = os.path.join(BASE_DIR, API_DIR, payload_dir)
+    if payload_name in os.listdir(payload_path):
+        file_path = os.path.join(payload_path, payload_name)
+        try:
+            payload_file = open(file_path, 'rb')
+        except PermissionError:
+            raise Http404('Invalid File!')
+
+        return FileResponse(payload_file)
+
+    raise Http404('Payload does not exist!')
