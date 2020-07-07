@@ -63,6 +63,7 @@ def get_command(request, agent_identifier):
     cmd_info = {}
     commands = agent.commands.order_by('timestamp')
     if commands:
+        print(commands)
         cmd_info['session_id'] = commands[0].session_id
         cmd_info['cmdline'] = commands[0].cmdline
         commands[0].delete()

@@ -26,18 +26,20 @@ def load_data(session_id):
     return data
 
 
+def init_error_agent():
+    err_agent = Agent.create(identifier=ERR_IDENTIFIER)
+    err_agent.remote_ip = '127.0.0.1'
+    err_agent.operating_system = 'Windows'
+    err_agent.computer_name = 'Err-PC'
+    err_agent.username = 'Err-Agent'
+    err_agent.protocol = 'http'
+    err_agent.save()
+
 def output_error(err, session_id):
     err_agent = Agent.objects.filter(identifier=ERR_IDENTIFIER)
     if not err_agent:
-        err_agent = Agent.create(identifier=ERR_IDENTIFIER)
-        err_agent.remote_ip = '127.0.0.1'
-        err_agent.operating_system = 'Windows'
-        err_agent.computer_name = 'Err-PC'
-        err_agent.username = 'Err-Agent'
-        err_agent.protocol = 'http'
-        err_agent.save()
-    else:
-        err_agent = Agent.objects.get(identifier=ERR_IDENTIFIER)
+        init_error_agent()
+    err_agent = Agent.objects.get(identifier=ERR_IDENTIFIER)
 
     err_output = Output()
     err_output.agent = err_agent
