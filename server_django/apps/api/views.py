@@ -7,7 +7,7 @@ from django.utils import timezone
 from django.utils.html import escape
 from django.views.decorators.http import require_GET
 
-from .utils import get_client_ip
+from .utils import get_client_ip, BASE_DIR, API_DIR
 from .models import Agent, Session, Agent_session, Output
 
 import os
@@ -104,7 +104,8 @@ def modules_download(request, module_name):
     :param module_name: name of the module
     :return: the fileresponse object if the file is valid
     """
-    modules_path = 'apps/api/modules'
+    modules_dir = 'modules'
+    modules_path = os.path.join(BASE_DIR, API_DIR, modules_dir)
     if module_name in os.listdir(modules_path):
         file_path = os.path.join(modules_path, module_name)
         try:

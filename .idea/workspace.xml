@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d9d3bf-29db-44fc-9565-ed4d27b192db" name="Default Changelist" comment="" />
+    <list default="true" id="47d9d3bf-29db-44fc-9565-ed4d27b192db" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/server_django/apps/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
