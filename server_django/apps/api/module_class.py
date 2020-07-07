@@ -68,7 +68,7 @@ class nmap(object):
         if len(cidr_string.split('/')) == 1 and re.match(r'^{}$'.format(self.IPV4_RE), cidr_string):
             return [cidr_string]
         elif len(cidr_string.split('/')) == 2 and re.match(self.CIDR_RE, cidr_string):
-            return [str(ip) for ip in ipaddress.IPv4Network(cidr_string)]
+            return [ str(ip) for ip in list(ipaddress.ip_network(cidr_string).hosts())]
         else:
             raise nmapError('Invalid CIDR notation! Eg. 192.168.1.0/24')
 

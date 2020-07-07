@@ -66,7 +66,7 @@ class NmapTest(TestCase):
 
         # Expected results
         single_ip_addr_expected = ['192.168.1.1']
-        multiple_ip_addr_expected = ['192.168.1.0', '192.168.1.1', '192.168.1.2', '192.168.1.3']
+        multiple_ip_addr_expected = ['192.168.1.1', '192.168.1.2']
 
         self.assertEqual(nmap_test.gather_hosts_from_cidr(single_ip_addr), single_ip_addr_expected)
         self.assertEqual(nmap_test.gather_hosts_from_cidr(multiple_ip_addr), multiple_ip_addr_expected)
@@ -89,9 +89,9 @@ class NmapTest(TestCase):
             3: 'nmap -PS 192.168.1.1 6667-10000'
         }
         test_command_2_expected = {
-            1: 'nmap -PR 192.168.1.0-192.168.1.85 0',
-            2: 'nmap -PR 192.168.1.85-192.168.1.170 0',
-            3: 'nmap -PR 192.168.1.170-192.168.1.255 0'
+            1: 'nmap -PR 192.168.1.1-192.168.1.85 0',
+            2: 'nmap -PR 192.168.1.85-192.168.1.169 0',
+            3: 'nmap -PR 192.168.1.169-192.168.1.253 0'
         }
 
         self.assertDictEqual(nmap_test.parse_command(test_command), test_command_expected)

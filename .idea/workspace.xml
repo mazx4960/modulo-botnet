@@ -19,7 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d9d3bf-29db-44fc-9565-ed4d27b192db" name="Default Changelist" comment="" />
+    <list default="true" id="47d9d3bf-29db-44fc-9565-ed4d27b192db" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/apps/api/module_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/module_class.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/apps/api/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/tests.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +55,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/server_django/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -123,6 +128,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="726" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594118327639">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="726" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.644.1920.1040@0.0.1920.1040" timestamp="1594118327639" />
+    <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1594120640459">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.644.1920.1040@0.0.1920.1040" timestamp="1594120640459" />
     <state x="462" y="165" key="SettingsEditor" timestamp="1593072118116">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
