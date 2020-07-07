@@ -20,7 +20,7 @@ def store_data(data, session_id):
 
 def load_data(session_id):
     filename = 'pickle_{}'.format(session_id)
-    filepath = os.path.join(PICKLE_DIR, filename)
+    filepath = os.path.join(BASE_DIR, API_DIR, PICKLE_DIR, filename)
     with open(filepath, 'rb') as pickle_file:
         data = pickle.load(pickle_file)
     return data
