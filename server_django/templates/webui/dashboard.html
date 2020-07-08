@@ -35,19 +35,19 @@
 		<nav id="tmMainNav" class="tm-main-nav">
 			<ul>
 				<li>
-					<a id="Dashboard" class="scrolly active" data-bg-img="scathach.png" data-page="#tm-section-1">
+					<a id="Dashboard" class="scrolly active" data-bg-img="" data-page="#tm-section-1">
 						<i class="fas fa-home tm-nav-fa-icon"></i>
 						<span>Dashboard</span>
 					</a>
 				</li>
 				<li>
-					<a id="Sessions" class="scrolly" data-bg-img="jeanne alter.jpg" data-page="#tm-section-2" data-page-type="carousel">
+					<a id="Sessions" class="scrolly" data-bg-img="" data-page="#tm-section-2" data-page-type="carousel">
 						<i class="fas fa-map tm-nav-fa-icon"></i>
 						<span>Sessions</span>
 					</a>
 				</li>
 				<li>
-					<a id="Bots" class="scrolly" data-bg-img="jeanne darcs.jpg" data-page="#tm-section-3">
+					<a id="Bots" class="scrolly" data-bg-img="" data-page="#tm-section-3">
 						<i class="fas fa-users tm-nav-fa-icon"></i>
 						<span>Bots</span>
 					</a>
@@ -68,23 +68,22 @@
 	<!-- section 1 -->
 	<section id="tm-section-1" class="tm-section">
 		<div class="ml-auto">
-			<header class="mb-4"><h1 class="tm-text-shadow">Dashboard</h1></header>
-			<p class="mb-5 tm-font-big">The dashboard of our botnet C&C, to add content.</p>
+			<header class="mb-4"><h1 class="tm-text-shadow" style="color:yellow; font-size: 45px;">Dashboard</h1></header>
+			<p class="mb-5 tm-font-big" style="color:grey; font-size: 18px;">Welcome to SDL Group 1's C2!</p>
 			<a href="#" class="btn tm-btn tm-font-big" data-nav-link="#Sessions">Continue</a>
-			<!-- data-nav-link holds the ID of nav item, which means this link should behave the same as that nav item  -->
 		</div>
 	</section>
 
 	<!-- section 2 -->
 	<section id="tm-section-2" class="tm-section tm-section-carousel">
 		<div>
-			<header class="mb-4"><h2 class="tm-text-shadow">Saved Sessions</h2></header>
+			<header class="mb-4"><h2 class="tm-text-shadow" style="color:yellow; font-size: 35px;">Saved Sessions</h2></header>
 			<div class="tm-img-container">
 				<div class="tm-img-slider">
 					{% for session in sessions %}
 					<a href="{% url 'webui:view_session' session.id %}" class="tm-slider-img tm-border-white report_view">
 						<div>
-							<h1 style="text-align: center;">{{ session.id }}</h1>
+							<h1 style="text-align: center; text-decoration: underline !important;">{{ session.id }}</h1>
 							{% for output in outputs %}
 								{% if session.id == output.session_id %}
 								<p class="report">
@@ -103,7 +102,7 @@
 	<!-- section 3 -->
 	<section id="tm-section-3" class="tm-section">
 		<div class="row mb-4">
-			<header class="col-xl-12"><h2 class="tm-text-shadow">Compromised Bots</h2></header>
+			<header class="col-xl-12"><h2 class="tm-text-shadow" style="color:yellow; font-size: 35px;">Compromised Bots</h2></header>
 		</div>
 
 		<form action="{% url 'webui:create_session' %}" method="post" class="contact-form" id="select_bots_form">{% csrf_token %}

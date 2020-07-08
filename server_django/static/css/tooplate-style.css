@@ -59,6 +59,11 @@ p:last-child { margin-bottom: 0; }
     overflow-y:auto;
 }
 
+.report_view:hover{
+    color: #00cc00;
+    text-decoration: none !important;
+}
+
 .tm-bg-transparent-black {
     background-color: rgba(0,0,0,0.25);    
     padding: 30px;

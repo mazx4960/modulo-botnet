@@ -94,8 +94,9 @@ def send_instruction(request):
     session_id = request.POST.get('sid')
     command = request.POST.get('terminal')
 
-    command_pipe_obj = Pipeline()
-    command_pipe_obj.load_session(session_id)
-    command_pipe_obj.run(commandline=command)
+    if command:
+        command_pipe_obj = Pipeline()
+        command_pipe_obj.load_session(session_id)
+        command_pipe_obj.run(commandline=command)
 
     return redirect(reverse('webui:view_session', args=(session_id, )))
