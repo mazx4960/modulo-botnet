@@ -61,19 +61,27 @@ to be completed
 
 <b>Agent</b>
 - [ ] Testing Connectivity to Internet
-- [ ] Callback to server (used only on infection, and during network change)
+- [x] Callback to server (every 5 seconds)
 - [ ] In-built network discovery function
 - [ ] In-built portscanning function for discovered networks (scan an IP for given port range)
-    - [ ] Dropper (downloads file from C2)
-    - [ ] Execution of files
-    - [ ] Persistency
-    - [ ] Self-Removal
+- [x] Dropper (downloads file from C2)
+- [x] Execution of files
+- [x] Persistency
+- [ ] Self-Removal
 
 ## Supported Plugins
 - [x] nmap
 ```commandline
 load module nmap
 nmap -sS 192.168.1.1 1-65535
+```
+- [x] dns_tunnelling
+```commandline
+# on the agent side
+sudo dns2tcpc -f dns2tcpc.conf <server_ip>
+
+# on the server side
+sudo dns2tcpd -f dns2tcpd.conf
 ```
 
 ## Future expansions
