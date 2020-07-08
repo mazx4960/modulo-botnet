@@ -20,53 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47d9d3bf-29db-44fc-9565-ed4d27b192db" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/docs/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/docs/compatibility.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/json_response.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/shortcuts.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/templatetags/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/templatetags/compat.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/south_settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/test_app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/test_app/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/test_app/templatetags/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/test_app/templatetags/test_app_tags.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/test_compat.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/test_module_loading.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/not_installed/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/not_installed/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/test_module/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/test_module/another_bad_module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/test_module/another_good_module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/test_module/bad_module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/test_module/good_module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/test_no_submodule.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/django_compat-1.0.15.dist-info/AUTHORS.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/django_compat-1.0.15.dist-info/INSTALLER" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/django_compat-1.0.15.dist-info/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/django_compat-1.0.15.dist-info/METADATA" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/django_compat-1.0.15.dist-info/RECORD" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/django_compat-1.0.15.dist-info/WHEEL" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/django_compat-1.0.15.dist-info/top_level.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/six-1.15.0.dist-info/INSTALLER" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/six-1.15.0.dist-info/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/six-1.15.0.dist-info/METADATA" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/six-1.15.0.dist-info/RECORD" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/six-1.15.0.dist-info/WHEEL" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/six-1.15.0.dist-info/top_level.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/six.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/api/module_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/module_class.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/agent_dropper.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/agent_dropper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/payload.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server_django/server_django/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/server_django/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/templates/webui/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/templates/webui/old_dashboard.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
