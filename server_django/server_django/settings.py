@@ -43,9 +43,6 @@ INSTALLED_APPS = [
     'apps.api',
     'apps.accounts',
     'apps.webui',
-    #
-    # 'api.apps.ApiConfig',
-    # 'webui.apps.WebuiConfig',
 ]
 
 MIDDLEWARE = [

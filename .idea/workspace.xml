@@ -20,10 +20,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47d9d3bf-29db-44fc-9565-ed4d27b192db" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server_django/apps/api/payloads/payload.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/docs/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/docs/compatibility.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/json_response.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/shortcuts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/templatetags/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/templatetags/compat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/south_settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/test_app/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/test_app/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/test_app/templatetags/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/test_app/templatetags/test_app_tags.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/test_compat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/test_module_loading.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/not_installed/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/not_installed/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/test_module/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/test_module/another_bad_module.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/test_module/another_good_module.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/test_module/bad_module.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/test_module/good_module.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/compat/tests/utils_tests/test_no_submodule.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/django_compat-1.0.15.dist-info/AUTHORS.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/django_compat-1.0.15.dist-info/INSTALLER" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/django_compat-1.0.15.dist-info/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/django_compat-1.0.15.dist-info/METADATA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/django_compat-1.0.15.dist-info/RECORD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/django_compat-1.0.15.dist-info/WHEEL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/django_compat-1.0.15.dist-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/six-1.15.0.dist-info/INSTALLER" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/six-1.15.0.dist-info/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/six-1.15.0.dist-info/METADATA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/six-1.15.0.dist-info/RECORD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/six-1.15.0.dist-info/WHEEL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/six-1.15.0.dist-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv_windows/Lib/site-packages/six.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_django/apps/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/apps/api/module_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/apps/api/module_class.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/server_django/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_django/server_django/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/templates/webui/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_django/templates/webui/old_dashboard.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,20 +98,20 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/server_django/apps/api/payloads" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\apps\api\modules" />
-      <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\apps" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\apps\api\payloads" />
       <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\static" />
       <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\templates" />
       <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\static\css" />
       <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\apps" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\apps" />
+      <recent name="C:\Users\desmo\Desktop\botnet-enumeration-network\server_django\apps\api\modules" />
     </key>
   </component>
   <component name="RunManager">

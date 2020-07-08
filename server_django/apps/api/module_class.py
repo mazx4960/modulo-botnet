@@ -116,8 +116,3 @@ class nmap(object):
                     port_stop - port_start) else port_stop
             command_list[self.PORT] = '{}-{}'.format(start, end)
             return ' '.join(command_list)
-
-
-class dns_tunneling(object):
-    def initialise(self):
-        pass
