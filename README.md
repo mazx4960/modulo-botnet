@@ -10,11 +10,15 @@
 
 ## Table of contents
 
+* [Warning](#warning)
 * [Important directories](#important-directories)
 * [Usage](#usage)
 * [Features](#features)
 * [Supported Plugins](#supported-plugins)
 * [Future expansions](#future-expansions)
+
+## Warning
+This project is only meant for educational purposes and should not be used for malicious activities! Use at your won risk!
 
 ## Important Directories
 * apps => server_django/apps (api, authentication, webui)
@@ -44,11 +48,10 @@ to be completed
     - [x] Select target agent(s)
     - [x] Send Instruction
     - [x] Wait and receive output (if necessary)
-    - [ ] Viewing other sessions
-- [ ] Executing commands on individual agents
+    - [x] Viewing other sessions
+- [x] Executing commands on individual agents
 - [x] Style sheets
-- [ ] Generate report (.txt) for discovered hosts and respective ports
-- [ ] Save and view past reports
+- [ ] Support for nmap reports
 - [ ] Build a network tree that showcases compromised machines
 
 <b>C2 Server (api)</b>
@@ -60,16 +63,13 @@ to be completed
 - [ ] Gathering a location heatmap of all the agents and target (https://ipinfo.io/<ip>)
 
 <b>Agent</b>
-- [ ] Testing Connectivity to Internet
 - [x] Callback to server (every 5 seconds)
-- [ ] In-built network discovery function
-- [ ] In-built portscanning function for discovered networks (scan an IP for given port range)
 - [x] Dropper (downloads file from C2)
 - [x] Execution of files
 - [x] Persistency
 - [ ] Self-Removal
 
-## Supported Plugins
+## Supported Modules
 - [x] nmap
 ```commandline
 load module nmap
