@@ -18,7 +18,7 @@
 * [Future expansions](#future-expansions)
 
 ## Warning
-This project is only meant for educational purposes and should not be used for malicious activities! Use at your won risk!
+This project is only meant for educational purposes and should not be used for malicious activities! Use at your own risk!
 
 ## Important Directories
 * apps => server_django/apps (api, authentication, webui)
