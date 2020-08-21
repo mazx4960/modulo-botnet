@@ -83,6 +83,3 @@ sudo dns2tcpc -f dns2tcpc.conf <server_ip>
 # on the server side
 sudo dns2tcpd -f dns2tcpd.conf
 ```
-
-## Future expansions
-- [ ] Docker swarm for different protocols like http and dns tunneling
