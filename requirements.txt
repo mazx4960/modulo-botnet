@@ -1,7 +1,7 @@
 asgiref==3.3.1
 certifi==2020.12.5
 chardet==3.0.4
-Django==3.1.4
+Django==3.1.5
 django-compat==1.0.15
 djangorestframework==3.12.2
 idna==2.10
