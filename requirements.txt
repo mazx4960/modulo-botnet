@@ -5,7 +5,7 @@ Django==3.1.5
 django-compat==1.0.15
 djangorestframework==3.12.2
 idna==2.10
-pytz==2020.5
+pytz==2021.1
 requests==2.25.1
 six==1.15.0
 sqlparse==0.4.1
