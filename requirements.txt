@@ -1,6 +1,6 @@
 asgiref==3.4.1
 certifi==2021.10.8
-chardet==3.0.4
+chardet==4.0.0
 Django==3.1.13
 django-compat==1.0.15
 djangorestframework==3.12.4
